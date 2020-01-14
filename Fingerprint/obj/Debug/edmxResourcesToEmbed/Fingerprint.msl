@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="fingerprintModelStoreContainer" CdmEntityContainer="fingerprintEntities">
+    <EntitySetMapping Name="absens">
+      <EntityTypeMapping TypeName="fingerprintModel.absen">
+        <MappingFragment StoreEntitySet="absen">
+          <ScalarProperty Name="upload" ColumnName="upload" />
+          <ScalarProperty Name="absen_lembur_pulang" ColumnName="absen_lembur_pulang" />
+          <ScalarProperty Name="absen_lembur" ColumnName="absen_lembur" />
+          <ScalarProperty Name="absen_kembali" ColumnName="absen_kembali" />
+          <ScalarProperty Name="absen_istirahat" ColumnName="absen_istirahat" />
+          <ScalarProperty Name="absen_pulang" ColumnName="absen_pulang" />
+          <ScalarProperty Name="absen_masuk" ColumnName="absen_masuk" />
+          <ScalarProperty Name="absen_telat" ColumnName="absen_telat" />
+          <ScalarProperty Name="absen_izin" ColumnName="absen_izin" />
+          <ScalarProperty Name="absen_hari" ColumnName="absen_hari" />
+          <ScalarProperty Name="absen_tanggal" ColumnName="absen_tanggal" />
+          <ScalarProperty Name="pegawai_id" ColumnName="pegawai_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aturans">
+      <EntityTypeMapping TypeName="fingerprintModel.aturan">
+        <MappingFragment StoreEntitySet="aturan">
+          <ScalarProperty Name="aturan_jam_pulang_khusus" ColumnName="aturan_jam_pulang_khusus" />
+          <ScalarProperty Name="aturan_jam_masuk_khusus" ColumnName="aturan_jam_masuk_khusus" />
+          <ScalarProperty Name="aturan_jam_pulang" ColumnName="aturan_jam_pulang" />
+          <ScalarProperty Name="aturan_jam_masuk" ColumnName="aturan_jam_masuk" />
+          <ScalarProperty Name="aturan_kegiatan" ColumnName="aturan_kegiatan" />
+          <ScalarProperty Name="aturan_hari" ColumnName="aturan_hari" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hari_khusus">
+      <EntityTypeMapping TypeName="fingerprintModel.hari_khusus">
+        <MappingFragment StoreEntitySet="hari_khusus">
+          <ScalarProperty Name="hari_khusus_keterangan" ColumnName="hari_khusus_keterangan" />
+          <ScalarProperty Name="hari_khusus_tanggal" ColumnName="hari_khusus_tanggal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="izins">
+      <EntityTypeMapping TypeName="fingerprintModel.izin">
+        <MappingFragment StoreEntitySet="izin">
+          <ScalarProperty Name="izin_keterangan" ColumnName="izin_keterangan" />
+          <ScalarProperty Name="izin_jenis" ColumnName="izin_jenis" />
+          <ScalarProperty Name="izin_tanggal" ColumnName="izin_tanggal" />
+          <ScalarProperty Name="pegawai_id" ColumnName="pegawai_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="liburs">
+      <EntityTypeMapping TypeName="fingerprintModel.libur">
+        <MappingFragment StoreEntitySet="libur">
+          <ScalarProperty Name="libur_keterangan" ColumnName="libur_keterangan" />
+          <ScalarProperty Name="libur_tanggal" ColumnName="libur_tanggal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="logs">
+      <EntityTypeMapping TypeName="fingerprintModel.log">
+        <MappingFragment StoreEntitySet="log">
+          <ScalarProperty Name="log_status" ColumnName="log_status" />
+          <ScalarProperty Name="log_keterangan" ColumnName="log_keterangan" />
+          <ScalarProperty Name="log_kode" ColumnName="log_kode" />
+          <ScalarProperty Name="log_jam" ColumnName="log_jam" />
+          <ScalarProperty Name="log_tanggal" ColumnName="log_tanggal" />
+          <ScalarProperty Name="pegawai_id" ColumnName="pegawai_id" />
+          <ScalarProperty Name="log_id" ColumnName="log_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mesins">
+      <EntityTypeMapping TypeName="fingerprintModel.mesin">
+        <MappingFragment StoreEntitySet="mesin">
+          <ScalarProperty Name="mesin_sn" ColumnName="mesin_sn" />
+          <ScalarProperty Name="mesin_key" ColumnName="mesin_key" />
+          <ScalarProperty Name="mesin_ip" ColumnName="mesin_ip" />
+          <ScalarProperty Name="mesin_nama" ColumnName="mesin_nama" />
+          <ScalarProperty Name="mesin_id" ColumnName="mesin_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pegawais">
+      <EntityTypeMapping TypeName="fingerprintModel.pegawai">
+        <MappingFragment StoreEntitySet="pegawai">
+          <ScalarProperty Name="upload" ColumnName="upload" />
+          <ScalarProperty Name="pegawai_sandi" ColumnName="pegawai_sandi" />
+          <ScalarProperty Name="pegawai_izin" ColumnName="pegawai_izin" />
+          <ScalarProperty Name="pegawai_jenis_kelamin" ColumnName="pegawai_jenis_kelamin" />
+          <ScalarProperty Name="pegawai_golongan" ColumnName="pegawai_golongan" />
+          <ScalarProperty Name="pegawai_panggilan" ColumnName="pegawai_panggilan" />
+          <ScalarProperty Name="pegawai_nama" ColumnName="pegawai_nama" />
+          <ScalarProperty Name="pegawai_nip" ColumnName="pegawai_nip" />
+          <ScalarProperty Name="pegawai_id" ColumnName="pegawai_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="upload_download">
+      <EntityTypeMapping TypeName="fingerprintModel.upload_download">
+        <MappingFragment StoreEntitySet="upload_download">
+          <ScalarProperty Name="upload_download_keterangan" ColumnName="upload_download_keterangan" />
+          <ScalarProperty Name="upload_download_jenis" ColumnName="upload_download_jenis" />
+          <ScalarProperty Name="upload_download_tanggal" ColumnName="upload_download_tanggal" />
+          <ScalarProperty Name="upload_download_id" ColumnName="upload_download_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="81db91870b864eaf9f22399c63c14269" Name="Diagram1">
+        <EntityTypeShape EntityType="fingerprintModel.absen" Width="1.5" PointX="3" PointY="7.375" />
+        <EntityTypeShape EntityType="fingerprintModel.aturan" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="fingerprintModel.hari_khusus" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="fingerprintModel.izin" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="fingerprintModel.libur" Width="1.5" PointX="5.75" PointY="6.75" />
+        <EntityTypeShape EntityType="fingerprintModel.log" Width="1.5" PointX="3" PointY="4" />
+        <EntityTypeShape EntityType="fingerprintModel.mesin" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="fingerprintModel.pegawai" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="fingerprintModel.upload_download" Width="1.5" PointX="7.75" PointY="3.75" />
+        <AssociationConnector Association="fingerprintModel.FK_absen_pegawai" />
+        <AssociationConnector Association="fingerprintModel.FK_izin_pegawai" />
+        <AssociationConnector Association="fingerprintModel.FK_log_pegawai" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

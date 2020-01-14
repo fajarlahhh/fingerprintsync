@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="fingerprintModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="fingerprintEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="absens" EntityType="fingerprintModel.absen" />
+    <EntitySet Name="aturans" EntityType="fingerprintModel.aturan" />
+    <EntitySet Name="hari_khusus" EntityType="fingerprintModel.hari_khusus" />
+    <EntitySet Name="izins" EntityType="fingerprintModel.izin" />
+    <EntitySet Name="jadwals" EntityType="fingerprintModel.jadwal" />
+    <EntitySet Name="liburs" EntityType="fingerprintModel.libur" />
+    <EntitySet Name="logs" EntityType="fingerprintModel.log" />
+    <EntitySet Name="mesins" EntityType="fingerprintModel.mesin" />
+    <EntitySet Name="pegawais" EntityType="fingerprintModel.pegawai" />
+    <AssociationSet Name="FK_absen_pegawai" Association="fingerprintModel.FK_absen_pegawai">
+      <End Role="pegawai" EntitySet="pegawais" />
+      <End Role="absen" EntitySet="absens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_izin_pegawai" Association="fingerprintModel.FK_izin_pegawai">
+      <End Role="pegawai" EntitySet="pegawais" />
+      <End Role="izin" EntitySet="izins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_jadwal_pegawai" Association="fingerprintModel.FK_jadwal_pegawai">
+      <End Role="pegawai" EntitySet="pegawais" />
+      <End Role="jadwal" EntitySet="jadwals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_log_pegawai" Association="fingerprintModel.FK_log_pegawai">
+      <End Role="pegawai" EntitySet="pegawais" />
+      <End Role="log" EntitySet="logs" />
+    </AssociationSet>
+    <EntitySet Name="uploads" EntityType="fingerprintModel.upload" />
+  </EntityContainer>
+  <EntityType Name="absen">
+    <Key>
+      <PropertyRef Name="pegawai_id" />
+      <PropertyRef Name="absen_tanggal" />
+    </Key>
+    <Property Name="pegawai_id" Type="Int32" Nullable="false" />
+    <Property Name="absen_tanggal" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="absen_hari" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="absen_izin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="absen_telat" Type="Time" Precision="7" />
+    <Property Name="absen_masuk" Type="Time" Precision="7" />
+    <Property Name="absen_pulang" Type="Time" Precision="7" />
+    <Property Name="absen_istirahat" Type="Time" Precision="7" />
+    <Property Name="absen_kembali" Type="Time" Precision="7" />
+    <Property Name="absen_lembur" Type="Time" Precision="7" />
+    <Property Name="absen_lembur_pulang" Type="Time" Precision="7" />
+    <Property Name="upload" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="pegawai" Relationship="fingerprintModel.FK_absen_pegawai" FromRole="absen" ToRole="pegawai" />
+  </EntityType>
+  <EntityType Name="aturan">
+    <Key>
+      <PropertyRef Name="aturan_hari" />
+    </Key>
+    <Property Name="aturan_hari" Type="Int32" Nullable="false" />
+    <Property Name="aturan_kegiatan" Type="Boolean" Nullable="false" />
+    <Property Name="aturan_jam_masuk" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="aturan_jam_pulang" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="aturan_jam_masuk_khusus" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="aturan_jam_pulang_khusus" Type="Time" Nullable="false" Precision="7" />
+  </EntityType>
+  <EntityType Name="hari_khusus">
+    <Key>
+      <PropertyRef Name="hari_khusus_tanggal" />
+    </Key>
+    <Property Name="hari_khusus_tanggal" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="hari_khusus_keterangan" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="izin">
+    <Key>
+      <PropertyRef Name="pegawai_id" />
+      <PropertyRef Name="izin_tanggal" />
+    </Key>
+    <Property Name="pegawai_id" Type="Int32" Nullable="false" />
+    <Property Name="izin_tanggal" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="izin_jenis" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="izin_keterangan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="pegawai" Relationship="fingerprintModel.FK_izin_pegawai" FromRole="izin" ToRole="pegawai" />
+  </EntityType>
+  <EntityType Name="jadwal">
+    <Key>
+      <PropertyRef Name="pegawai_id" />
+      <PropertyRef Name="shift_id" />
+      <PropertyRef Name="jadwal_tanggal" />
+    </Key>
+    <Property Name="pegawai_id" Type="Int32" Nullable="false" />
+    <Property Name="shift_id" Type="Int32" Nullable="false" />
+    <Property Name="jadwal_tanggal" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="pegawai" Relationship="fingerprintModel.FK_jadwal_pegawai" FromRole="jadwal" ToRole="pegawai" />
+  </EntityType>
+  <EntityType Name="libur">
+    <Key>
+      <PropertyRef Name="libur_tanggal" />
+    </Key>
+    <Property Name="libur_tanggal" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="libur_keterangan" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="log">
+    <Key>
+      <PropertyRef Name="log_id" />
+    </Key>
+    <Property Name="log_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pegawai_id" Type="Int32" Nullable="false" />
+    <Property Name="log_tanggal" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="log_jam" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="log_kode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="log_keterangan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="log_status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="pegawai" Relationship="fingerprintModel.FK_log_pegawai" FromRole="log" ToRole="pegawai" />
+  </EntityType>
+  <EntityType Name="mesin">
+    <Key>
+      <PropertyRef Name="mesin_id" />
+    </Key>
+    <Property Name="mesin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mesin_nama" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mesin_ip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mesin_key" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="mesin_sn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="pegawai">
+    <Key>
+      <PropertyRef Name="pegawai_id" />
+    </Key>
+    <Property Name="pegawai_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pegawai_nip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pegawai_nama" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="pegawai_panggilan" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="pegawai_golongan" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="pegawai_jenis_kelamin" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="pegawai_izin" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="pegawai_sandi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="absens" Relationship="fingerprintModel.FK_absen_pegawai" FromRole="pegawai" ToRole="absen" />
+    <NavigationProperty Name="izins" Relationship="fingerprintModel.FK_izin_pegawai" FromRole="pegawai" ToRole="izin" />
+    <NavigationProperty Name="jadwals" Relationship="fingerprintModel.FK_jadwal_pegawai" FromRole="pegawai" ToRole="jadwal" />
+    <NavigationProperty Name="logs" Relationship="fingerprintModel.FK_log_pegawai" FromRole="pegawai" ToRole="log" />
+  </EntityType>
+  <Association Name="FK_absen_pegawai">
+    <End Type="fingerprintModel.pegawai" Role="pegawai" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="fingerprintModel.absen" Role="absen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pegawai">
+        <PropertyRef Name="pegawai_id" />
+      </Principal>
+      <Dependent Role="absen">
+        <PropertyRef Name="pegawai_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_izin_pegawai">
+    <End Type="fingerprintModel.pegawai" Role="pegawai" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="fingerprintModel.izin" Role="izin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pegawai">
+        <PropertyRef Name="pegawai_id" />
+      </Principal>
+      <Dependent Role="izin">
+        <PropertyRef Name="pegawai_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_jadwal_pegawai">
+    <End Type="fingerprintModel.pegawai" Role="pegawai" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="fingerprintModel.jadwal" Role="jadwal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pegawai">
+        <PropertyRef Name="pegawai_id" />
+      </Principal>
+      <Dependent Role="jadwal">
+        <PropertyRef Name="pegawai_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_log_pegawai">
+    <End Type="fingerprintModel.pegawai" Role="pegawai" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="fingerprintModel.log" Role="log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pegawai">
+        <PropertyRef Name="pegawai_id" />
+      </Principal>
+      <Dependent Role="log">
+        <PropertyRef Name="pegawai_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="upload">
+    <Key>
+      <PropertyRef Name="upload_id" />
+    </Key>
+    <Property Name="upload_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="upload_tanggal" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="upload_keterangan" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

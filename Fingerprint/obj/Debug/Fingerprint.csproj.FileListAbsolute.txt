@@ -1,0 +1,64 @@
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\fingerprint.mdf
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\fingerprint_log.ldf
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\SIM Kendali.exe.config
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\SIM Kendali.exe.manifest
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\SIM Kendali.application
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\SIM Kendali.exe
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\SIM Kendali.pdb
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\EntityFramework.dll
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\EntityFramework.SqlServer.dll
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\Microsoft.Owin.dll
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\Microsoft.Owin.Hosting.dll
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\Microsoft.Owin.Testing.dll
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\MyTested.WebApi.dll
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\Newtonsoft.Json.dll
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\Owin.dll
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\System.Net.Http.Formatting.dll
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\System.Web.Http.dll
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\EntityFramework.xml
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\EntityFramework.SqlServer.xml
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\Microsoft.Owin.xml
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\Microsoft.Owin.Hosting.xml
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\Microsoft.Owin.Testing.xml
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\MyTested.WebApi.xml
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\Newtonsoft.Json.xml
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\System.Net.Http.Formatting.xml
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\System.Web.Http.xml
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\Interop.zkemkeeper.dll
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Interop.zkemkeeper.dll
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.csproj.ResolveComReference.cache
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.FormProsesDownloadPegawaiDariMesin.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.FormSplashScreen.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.FormUploadAbsensiKeWeb.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.FormPosting.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.FormProsesPosting.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.FormProsesUploadAbsensiKeWeb.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.FormSetKodeKantor.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.FormAturan.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.FormMain.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.FormProsesUploadPegawaiKeWeb.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.FormProsesUploadPegawaiKeMesin.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.FormProsesDownloadAbsensiDariMesin.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.Helper.TabMain.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.Properties.Resources.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.View.UcRekapAbsensi.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.View.UcLog.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.View.UcIzin.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.View.UcHariLibur.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.View.UcHariKhusus.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.View.UcMesin.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.View.UcPegawai.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.csproj.GenerateResource.cache
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\SIM Kendali.exe.manifest
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\SIM Kendali.application
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.csproj.CopyComplete
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\SIM Kendali.exe
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\SIM Kendali.pdb
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.FormImportLog.resources
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.FormKodeMasukPulang.resources
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\simkendali.mdf
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\simkendali_log.ldf
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.FormGagal.resources
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\SharpUpdate.dll
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\SharpUpdate.pdb
+D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.csprojAssemblyReference.cache

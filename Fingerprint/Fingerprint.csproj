@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{47E0F754-9902-4EE6-A081-EA978C7357C3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Fingerprint</RootNamespace>
+    <AssemblyName>SIM Kendali</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Users\andif\OneDrive\Desktop\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>Absensi Dikbud</ProductName>
+    <PublisherName>Andi Fajar Nugraha</PublisherName>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>EADD5AACF5340A2D813430FEF932F6B7C96806EC</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>fingerprint_orange.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Fingerprint.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Hosting, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Hosting.4.1.0\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Testing, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Testing.4.1.0\lib\net45\Microsoft.Owin.Testing.dll</HintPath>
+    </Reference>
+    <Reference Include="MyTested.WebApi, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MyTested.WebApi.1.3.0\lib\net45\MyTested.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="absen.cs">
+      <DependentUpon>Fingerprint.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aturan.cs">
+      <DependentUpon>Fingerprint.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class\DataHariKhusus.cs" />
+    <Compile Include="Class\DataIzin.cs" />
+    <Compile Include="Class\DataKantor.cs" />
+    <Compile Include="Class\DataLibur.cs" />
+    <Compile Include="Class\DataLog.cs" />
+    <Compile Include="Class\DataMesin.cs" />
+    <Compile Include="Class\DataPegawai.cs" />
+    <Compile Include="Fingerprint.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Fingerprint.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fingerprint.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Fingerprint.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Fingerprint1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Fingerprint.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fingerprintDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fingerprintDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FormGagal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGagal.Designer.cs">
+      <DependentUpon>FormGagal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormKodeMasukPulang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormKodeMasukPulang.Designer.cs">
+      <DependentUpon>FormKodeMasukPulang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormImportLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormImportLog.Designer.cs">
+      <DependentUpon>FormImportLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProsesDownloadPegawaiDariMesin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProsesDownloadPegawaiDariMesin.designer.cs">
+      <DependentUpon>FormProsesDownloadPegawaiDariMesin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSplashScreen.Designer.cs">
+      <DependentUpon>FormSplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUploadAbsensiKeWeb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUploadAbsensiKeWeb.Designer.cs">
+      <DependentUpon>FormUploadAbsensiKeWeb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPosting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPosting.Designer.cs">
+      <DependentUpon>FormPosting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProsesPosting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProsesPosting.designer.cs">
+      <DependentUpon>FormProsesPosting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProsesUploadAbsensiKeWeb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProsesUploadAbsensiKeWeb.designer.cs">
+      <DependentUpon>FormProsesUploadAbsensiKeWeb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSetKodeKantor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSetKodeKantor.Designer.cs">
+      <DependentUpon>FormSetKodeKantor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAturan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAturan.Designer.cs">
+      <DependentUpon>FormAturan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProsesUploadPegawaiKeWeb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProsesUploadPegawaiKeWeb.designer.cs">
+      <DependentUpon>FormProsesUploadPegawaiKeWeb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProsesUploadPegawaiKeMesin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProsesUploadPegawaiKeMesin.designer.cs">
+      <DependentUpon>FormProsesUploadPegawaiKeMesin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProsesDownloadAbsensiDariMesin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProsesDownloadAbsensiDariMesin.designer.cs">
+      <DependentUpon>FormProsesDownloadAbsensiDariMesin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="hari_khusus.cs">
+      <DependentUpon>Fingerprint.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\AppSetting.cs" />
+    <Compile Include="Helper\Encrypt.cs" />
+    <Compile Include="Helper\TabMain.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="izin.cs">
+      <DependentUpon>Fingerprint.tt</DependentUpon>
+    </Compile>
+    <Compile Include="libur.cs">
+      <DependentUpon>Fingerprint.tt</DependentUpon>
+    </Compile>
+    <Compile Include="log.cs">
+      <DependentUpon>Fingerprint.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mesin.cs">
+      <DependentUpon>Fingerprint.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pegawai.cs">
+      <DependentUpon>Fingerprint.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="upload_download.cs">
+      <DependentUpon>Fingerprint.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class\RekapAbsen.cs" />
+    <Compile Include="View\UcRekapAbsensi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UcRekapAbsensi.Designer.cs">
+      <DependentUpon>UcRekapAbsensi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UcLog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UcLog.Designer.cs">
+      <DependentUpon>UcLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UcIzin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UcIzin.Designer.cs">
+      <DependentUpon>UcIzin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UcHariLibur.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UcHariLibur.Designer.cs">
+      <DependentUpon>UcHariLibur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UcHariKhusus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UcHariKhusus.Designer.cs">
+      <DependentUpon>UcHariKhusus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UcMesin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UcMesin.Designer.cs">
+      <DependentUpon>UcMesin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UcPegawai.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UcPegawai.Designer.cs">
+      <DependentUpon>UcPegawai.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormGagal.resx">
+      <DependentUpon>FormGagal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormKodeMasukPulang.resx">
+      <DependentUpon>FormKodeMasukPulang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormImportLog.resx">
+      <DependentUpon>FormImportLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProsesDownloadPegawaiDariMesin.resx">
+      <DependentUpon>FormProsesDownloadPegawaiDariMesin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSplashScreen.resx">
+      <DependentUpon>FormSplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUploadAbsensiKeWeb.resx">
+      <DependentUpon>FormUploadAbsensiKeWeb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPosting.resx">
+      <DependentUpon>FormPosting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProsesPosting.resx">
+      <DependentUpon>FormProsesPosting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProsesUploadAbsensiKeWeb.resx">
+      <DependentUpon>FormProsesUploadAbsensiKeWeb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSetKodeKantor.resx">
+      <DependentUpon>FormSetKodeKantor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAturan.resx">
+      <DependentUpon>FormAturan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProsesUploadPegawaiKeWeb.resx">
+      <DependentUpon>FormProsesUploadPegawaiKeWeb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProsesUploadPegawaiKeMesin.resx">
+      <DependentUpon>FormProsesUploadPegawaiKeMesin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProsesDownloadAbsensiDariMesin.resx">
+      <DependentUpon>FormProsesDownloadAbsensiDariMesin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Helper\TabMain.resx">
+      <DependentUpon>TabMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="View\UcRekapAbsensi.resx">
+      <DependentUpon>UcRekapAbsensi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UcLog.resx">
+      <DependentUpon>UcLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UcIzin.resx">
+      <DependentUpon>UcIzin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UcHariLibur.resx">
+      <DependentUpon>UcHariLibur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UcHariKhusus.resx">
+      <DependentUpon>UcHariKhusus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UcMesin.resx">
+      <DependentUpon>UcMesin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UcPegawai.resx">
+      <DependentUpon>UcPegawai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Fingerprint.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Fingerprint.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include=".editorconfig" />
+    <None Include="Fingerprint.edmx.diagram">
+      <DependentUpon>Fingerprint.edmx</DependentUpon>
+    </None>
+    <None Include="fingerprintDataSet.xsc">
+      <DependentUpon>fingerprintDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="fingerprintDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>fingerprintDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="fingerprintDataSet.xss">
+      <DependentUpon>fingerprintDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Fingerprint_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fingerprint.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Fingerprint.edmx</DependentUpon>
+      <LastGenOutput>Fingerprint.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="fingerprint.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fingerprint.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Fingerprint.edmx</DependentUpon>
+      <LastGenOutput>Fingerprint1.cs</LastGenOutput>
+    </Content>
+    <Content Include="fingerprint_log.ldf">
+      <DependentUpon>fingerprint.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fingerprint_orange.ico" />
+    <Content Include="simkendali.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="simkendali_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>simkendali.mdf</DependentUpon>
+    </Content>
+    <None Include="Resources\logo1.png" />
+    <None Include="Resources\logo.png" />
+    <None Include="Resources\ntb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="zkemkeeper">
+      <Guid>{FE9DED34-E159-408E-8490-B720A5E632C7}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharpUpdate\SharpUpdate.csproj">
+      <Project>{811c1d69-764f-4335-8363-b93a1d106268}</Project>
+      <Name>SharpUpdate</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+</Project>

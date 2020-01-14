@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="fingerprintModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="absen">
+    <Key>
+      <PropertyRef Name="pegawai_id" />
+      <PropertyRef Name="absen_tanggal" />
+    </Key>
+    <Property Name="pegawai_id" Type="int" Nullable="false" />
+    <Property Name="absen_tanggal" Type="date" Nullable="false" />
+    <Property Name="absen_hari" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="absen_izin" Type="varchar" MaxLength="50" />
+    <Property Name="absen_telat" Type="time" Precision="7" />
+    <Property Name="absen_masuk" Type="time" Precision="7" />
+    <Property Name="absen_pulang" Type="time" Precision="7" />
+    <Property Name="absen_istirahat" Type="time" Precision="7" />
+    <Property Name="absen_kembali" Type="time" Precision="7" />
+    <Property Name="absen_lembur" Type="time" Precision="7" />
+    <Property Name="absen_lembur_pulang" Type="time" Precision="7" />
+    <Property Name="upload" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aturan">
+    <Key>
+      <PropertyRef Name="aturan_hari" />
+    </Key>
+    <Property Name="aturan_hari" Type="int" Nullable="false" />
+    <Property Name="aturan_kegiatan" Type="bit" Nullable="false" />
+    <Property Name="aturan_jam_masuk" Type="time" Precision="7" Nullable="false" />
+    <Property Name="aturan_jam_pulang" Type="time" Precision="7" Nullable="false" />
+    <Property Name="aturan_jam_masuk_khusus" Type="time" Precision="7" Nullable="false" />
+    <Property Name="aturan_jam_pulang_khusus" Type="time" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="hari_khusus">
+    <Key>
+      <PropertyRef Name="hari_khusus_tanggal" />
+    </Key>
+    <Property Name="hari_khusus_tanggal" Type="date" Nullable="false" />
+    <Property Name="hari_khusus_keterangan" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="izin">
+    <Key>
+      <PropertyRef Name="pegawai_id" />
+      <PropertyRef Name="izin_tanggal" />
+    </Key>
+    <Property Name="pegawai_id" Type="int" Nullable="false" />
+    <Property Name="izin_tanggal" Type="date" Nullable="false" />
+    <Property Name="izin_jenis" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="izin_keterangan" Type="text" />
+  </EntityType>
+  <EntityType Name="jadwal">
+    <Key>
+      <PropertyRef Name="pegawai_id" />
+      <PropertyRef Name="shift_id" />
+      <PropertyRef Name="jadwal_tanggal" />
+    </Key>
+    <Property Name="pegawai_id" Type="int" Nullable="false" />
+    <Property Name="shift_id" Type="int" Nullable="false" />
+    <Property Name="jadwal_tanggal" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="libur">
+    <Key>
+      <PropertyRef Name="libur_tanggal" />
+    </Key>
+    <Property Name="libur_tanggal" Type="date" Nullable="false" />
+    <Property Name="libur_keterangan" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="log">
+    <Key>
+      <PropertyRef Name="log_id" />
+    </Key>
+    <Property Name="log_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pegawai_id" Type="int" Nullable="false" />
+    <Property Name="log_tanggal" Type="date" Nullable="false" />
+    <Property Name="log_jam" Type="time" Precision="7" Nullable="false" />
+    <Property Name="log_kode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="log_keterangan" Type="varchar" MaxLength="10" />
+    <Property Name="log_status" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mesin">
+    <Key>
+      <PropertyRef Name="mesin_id" />
+    </Key>
+    <Property Name="mesin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mesin_nama" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="mesin_ip" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="mesin_key" Type="text" Nullable="false" />
+    <Property Name="mesin_sn" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pegawai">
+    <Key>
+      <PropertyRef Name="pegawai_id" />
+    </Key>
+    <Property Name="pegawai_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pegawai_nip" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pegawai_nama" Type="text" Nullable="false" />
+    <Property Name="pegawai_panggilan" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="pegawai_golongan" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="pegawai_jenis_kelamin" Type="nchar" MaxLength="10" />
+    <Property Name="pegawai_izin" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="pegawai_sandi" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="upload">
+    <Key>
+      <PropertyRef Name="upload_id" />
+    </Key>
+    <Property Name="upload_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="upload_tanggal" Type="datetime" Nullable="false" />
+    <Property Name="upload_keterangan" Type="text" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_absen_pegawai">
+    <End Role="pegawai" Type="Self.pegawai" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="absen" Type="Self.absen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pegawai">
+        <PropertyRef Name="pegawai_id" />
+      </Principal>
+      <Dependent Role="absen">
+        <PropertyRef Name="pegawai_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_izin_pegawai">
+    <End Role="pegawai" Type="Self.pegawai" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="izin" Type="Self.izin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pegawai">
+        <PropertyRef Name="pegawai_id" />
+      </Principal>
+      <Dependent Role="izin">
+        <PropertyRef Name="pegawai_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_jadwal_pegawai">
+    <End Role="pegawai" Type="Self.pegawai" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="jadwal" Type="Self.jadwal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pegawai">
+        <PropertyRef Name="pegawai_id" />
+      </Principal>
+      <Dependent Role="jadwal">
+        <PropertyRef Name="pegawai_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_log_pegawai">
+    <End Role="pegawai" Type="Self.pegawai" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="log" Type="Self.log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pegawai">
+        <PropertyRef Name="pegawai_id" />
+      </Principal>
+      <Dependent Role="log">
+        <PropertyRef Name="pegawai_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="fingerprintModelStoreContainer">
+    <EntitySet Name="absen" EntityType="Self.absen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="aturan" EntityType="Self.aturan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hari_khusus" EntityType="Self.hari_khusus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="izin" EntityType="Self.izin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="jadwal" EntityType="Self.jadwal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="libur" EntityType="Self.libur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="log" EntityType="Self.log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mesin" EntityType="Self.mesin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pegawai" EntityType="Self.pegawai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="upload" EntityType="Self.upload" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_absen_pegawai" Association="Self.FK_absen_pegawai">
+      <End Role="pegawai" EntitySet="pegawai" />
+      <End Role="absen" EntitySet="absen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_izin_pegawai" Association="Self.FK_izin_pegawai">
+      <End Role="pegawai" EntitySet="pegawai" />
+      <End Role="izin" EntitySet="izin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_jadwal_pegawai" Association="Self.FK_jadwal_pegawai">
+      <End Role="pegawai" EntitySet="pegawai" />
+      <End Role="jadwal" EntitySet="jadwal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_log_pegawai" Association="Self.FK_log_pegawai">
+      <End Role="pegawai" EntitySet="pegawai" />
+      <End Role="log" EntitySet="log" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
