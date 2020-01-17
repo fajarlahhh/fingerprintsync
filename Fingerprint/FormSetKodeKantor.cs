@@ -1,5 +1,7 @@
 ﻿using Fingerprint.Class;
 using Fingerprint.Helper;
+using IniParser;
+using IniParser.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -27,10 +29,13 @@ namespace Fingerprint
         private void FormAturan_Load(object sender, EventArgs e)
         {
             this.url = setting.GetConnectionString("api");
-            this.id = Properties.Settings.Default.kantor_id;
-            this.nama = Properties.Settings.Default.kantor_nama;
-            this.lokasi = Properties.Settings.Default.kantor_lokasi;
-            this.mesin = Properties.Settings.Default.kantor_mesin;
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile("app.ini");
+
+            this.id = data["Sekolah"]["IDSekolah"];
+            this.nama = data["Sekolah"]["NamaSekolah"];
+            this.lokasi = data["Sekolah"]["LokasiSekolah"];
+            this.mesin = data["Sekolah"]["SupportMesin"];
             _ = GetKantorAsync();
         }
 
@@ -64,6 +69,16 @@ namespace Fingerprint
             }
         }
 
+        private void FormSetKodeKantor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile("app.ini");
+
+            string id = data["Sekolah"]["IDSekolah"];
+            if (string.IsNullOrEmpty(id))
+                Application.Exit();
+        }
+
         IEnumerable<DataKantor> kantor;
 
         private async Task GetKantorAsync()
@@ -94,11 +109,14 @@ namespace Fingerprint
             {
                 foreach (DataGridViewRow row in dgKantor.SelectedRows)
                 {
-                    Properties.Settings.Default.kantor_id = row.Cells[0].Value.ToString();
-                    Properties.Settings.Default.kantor_lokasi = row.Cells[1].Value.ToString();
-                    Properties.Settings.Default.kantor_nama = row.Cells[2].Value.ToString();
-                    Properties.Settings.Default.kantor_mesin = row.Cells[3].Value.ToString();
-                    Properties.Settings.Default.Save();
+                    var parser = new FileIniDataParser();
+                    IniData data = parser.ReadFile("app.ini");
+
+                    data["Sekolah"]["IDSekolah"] = row.Cells[0].Value.ToString();
+                    data["Sekolah"]["NamaSekolah"] = row.Cells[2].Value.ToString();
+                    data["Sekolah"]["LokasiSekolah"] = row.Cells[1].Value.ToString();
+                    data["Sekolah"]["SupportMesin"] = row.Cells[3].Value.ToString();
+                    parser.WriteFile("app.ini", data);
                 }
                 Application.Restart();
                 Environment.Exit(0);

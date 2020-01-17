@@ -30,12 +30,12 @@
         {
             this.btnSimpan = new System.Windows.Forms.Button();
             this.dgKantor = new System.Windows.Forms.DataGridView();
-            this.txtCari = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.kantor_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kantor_lokasi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kantor_nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kantor_mesin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtCari = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgKantor)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,23 +74,6 @@
             this.dgKantor.Size = new System.Drawing.Size(525, 236);
             this.dgKantor.TabIndex = 63;
             // 
-            // txtCari
-            // 
-            this.txtCari.Location = new System.Drawing.Point(43, 12);
-            this.txtCari.Name = "txtCari";
-            this.txtCari.Size = new System.Drawing.Size(370, 20);
-            this.txtCari.TabIndex = 64;
-            this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(25, 13);
-            this.label1.TabIndex = 65;
-            this.label1.Text = "Cari";
-            // 
             // kantor_id
             // 
             this.kantor_id.DataPropertyName = "kantor_id";
@@ -122,6 +105,23 @@
             this.kantor_mesin.Name = "kantor_mesin";
             this.kantor_mesin.Visible = false;
             // 
+            // txtCari
+            // 
+            this.txtCari.Location = new System.Drawing.Point(43, 12);
+            this.txtCari.Name = "txtCari";
+            this.txtCari.Size = new System.Drawing.Size(370, 20);
+            this.txtCari.TabIndex = 64;
+            this.txtCari.TextChanged += new System.EventHandler(this.txtCari_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(25, 13);
+            this.label1.TabIndex = 65;
+            this.label1.Text = "Cari";
+            // 
             // FormSetKodeKantor
             // 
             this.AcceptButton = this.btnSimpan;
@@ -140,6 +140,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Set Kode Sekolah/KCD/Kantor";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormSetKodeKantor_FormClosed);
             this.Load += new System.EventHandler(this.FormAturan_Load);
             this.Shown += new System.EventHandler(this.FormSetKodeKantor_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgKantor)).EndInit();

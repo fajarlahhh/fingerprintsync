@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using Fingerprint.Helper;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IniParser;
+using IniParser.Model;
 
 namespace Fingerprint
 {
@@ -19,7 +21,17 @@ namespace Fingerprint
         {
             InitializeComponent();
             this.url = setting.GetConnectionString("api");
-            this.kantor = Properties.Settings.Default.kantor_id;
+            try
+            {
+                var parser = new FileIniDataParser();
+                IniData data = parser.ReadFile("app.ini");
+
+                this.kantor = data["Sekolah"]["IDSekolah"];
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         List<string> gagal = new List<string>();
@@ -107,7 +119,6 @@ namespace Fingerprint
                     MessageBox.Show("Berhasil upload semua data pegawai", "Result");
                     Close();
                 }
-                
             }
             catch (Exception ex)
             {

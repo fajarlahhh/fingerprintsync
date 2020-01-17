@@ -35,6 +35,8 @@ namespace Fingerprint
             var mesin = fp.mesins.ToList();
             foreach (var msn in mesin)
             {
+                progressBar.Value = 0;
+                bwDownload.ReportProgress(0);
                 lblProses.Invoke(new Action(() => lblProses.Text = "Melakukan koneksi ke mesin " + msn.mesin_nama + ", IP " + msn.mesin_ip + ", port " + msn.mesin_key));
                 bIsConnected = axCZKEM1.Connect_Net(msn.mesin_ip.Trim(), Convert.ToInt32(msn.mesin_key.Trim()));
                 if (bIsConnected == true)
@@ -60,18 +62,21 @@ namespace Fingerprint
                     {
                         try
                         {
-                            pegawai data = new pegawai();
-                            data.pegawai_id = sdwEnrollNumber;
-                            data.pegawai_nip = "";
-                            data.pegawai_nama = "";
-                            data.pegawai_panggilan = sName;
-                            data.pegawai_golongan = "";
-                            data.pegawai_jenis_kelamin = "";
-                            data.pegawai_izin = iPrivilege == 3 ? "0" : "1";
-                            data.pegawai_sandi = sPassword;
-                            data.upload = true;
-                            fp.pegawais.Add(data);
-                            lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data ID " + sdwEnrollNumber + ", nama " + sName + ", BERHASIL"));
+                            if (fp.pegawais.Where(x => x.pegawai_id.Equals(sdwEnrollNumber)).Count() == 0)
+                            {
+                                pegawai data = new pegawai();
+                                data.pegawai_id = sdwEnrollNumber;
+                                data.pegawai_nip = "";
+                                data.pegawai_nama = "";
+                                data.pegawai_panggilan = sName;
+                                data.pegawai_golongan = "";
+                                data.pegawai_jenis_kelamin = "";
+                                data.pegawai_izin = iPrivilege == 3 ? "0" : "1";
+                                data.pegawai_sandi = sPassword;
+                                data.upload = true;
+                                fp.pegawais.Add(data);
+                                lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data ID " + sdwEnrollNumber + ", nama " + sName + ", BERHASIL"));
+                            }
                         }
                         catch
                         {

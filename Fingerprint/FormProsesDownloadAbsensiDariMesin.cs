@@ -36,13 +36,15 @@ namespace Fingerprint
             lblProses.Invoke(new Action(() => lblProses.Text = "Mengambil data mesin"));
             foreach (var msn in mesin)
             {
+                progressBar.Value = 0;
+                bwDownload.ReportProgress(0);
                 lblProses.Invoke(new Action(() => lblProses.Text = "Melakukan koneksi ke mesin " + msn.mesin_nama + ", IP " + msn.mesin_ip + ", port " + msn.mesin_key));
                 bIsConnected = axCZKEM1.Connect_Net(msn.mesin_ip, Convert.ToInt32(msn.mesin_key));
                 if (bIsConnected == true)
                 {
                     lblProses.Invoke(new Action(() => lblProses.Text = "Koneksi ke mesin " + msn.mesin_nama + ", IP " + msn.mesin_ip + ", port " + msn.mesin_key + " berhasil"));
                         
-                    axCZKEM1.RegEvent(iMachineNumber, 65535);
+                    //axCZKEM1.RegEvent(iMachineNumber, 65535);
                     axCZKEM1.EnableDevice(iMachineNumber, false);
 
                     string sdwEnrollNumber = "";
@@ -58,7 +60,6 @@ namespace Fingerprint
 
                     int iValue = 0;
 
-                    axCZKEM1.EnableDevice(iMachineNumber, false);
                     lblProses.Invoke(new Action(() => lblProses.Text = "Menghitung jumlah data absensi"));
                     if (axCZKEM1.GetDeviceStatus(iMachineNumber, 6, ref iValue))
                     {
@@ -79,19 +80,18 @@ namespace Fingerprint
                                     data.log_status = idwInOutMode.ToString();
                                     fp.logs.Add(data);
                                     fp.SaveChanges();
-                                    lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data ID " + sdwEnrollNumber + ", tanggal " + idwYear + "-" + idwMonth + "-" + idwDay + ", waktu " + idwHour + ":" + idwMinute + ":" + idwSecond + " status " + idwInOutMode.ToString() +" ke " + nomor + "/" + iValue + ", BERHASIL"));
+                                    lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data ke " + nomor + "/" + iValue + " ID " + sdwEnrollNumber + ", tanggal " + idwYear + "-" + idwMonth + "-" + idwDay + ", waktu " + idwHour + ":" + idwMinute + ":" + idwSecond + " status " + idwInOutMode.ToString() + ", BERHASIL"));
                                 }
                                 catch
                                 {
                                     gagal.Add("ID " + sdwEnrollNumber + ", tanggal " + idwYear + "-" + idwMonth + "-" + idwDay + ", waktu " + idwHour + ":" + idwMinute + ":" + idwSecond + " status " + idwInOutMode.ToString() + " ke " + nomor + "/" + iValue);
-                                    lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data " + "ID " + sdwEnrollNumber + ", tanggal " + idwYear + "-" + idwMonth + "-" + idwDay + ", waktu " + idwHour + ":" + idwMinute + ":" + idwSecond + " status " + idwInOutMode.ToString() + " ke " + nomor + "/" + iValue + ", GAGAL"));
+                                    lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data ke " + nomor + "/" + iValue + " ID " + sdwEnrollNumber + ", tanggal " + idwYear + "-" + idwMonth + "-" + idwDay + ", waktu " + idwHour + ":" + idwMinute + ":" + idwSecond + " status " + idwInOutMode.ToString() + ", GAGAL"));
                                 }
                                 int percentage = nomor * 100 / iValue;
                                 nomor++;
                                 bwDownload.ReportProgress(percentage);
                             }
 
-                            axCZKEM1.EnableDevice(iMachineNumber, false);
                             if (axCZKEM1.ClearGLog(iMachineNumber))
                             {
                                 axCZKEM1.RefreshData(iMachineNumber);
@@ -111,15 +111,16 @@ namespace Fingerprint
                     }
                     axCZKEM1.EnableDevice(iMachineNumber, true);
                     bwDownload.ReportProgress(100);
-                    lblProses.Invoke(new Action(() => lblProses.Text = "Download data absen berhasil"));
                     if(gagal.Count > 0)
                     {
                         //FormGagal ggl = new FormGagal(gagal);
-                        MessageBox.Show("Gagal mendownload " + gagal.Count + " data absensi yang gagal");
+                        lblProses.Invoke(new Action(() => lblProses.Text = "Download " + gagal.Count + " data absen gagal"));
+                        MessageBox.Show("Gagal mendownload " + gagal.Count + " data absensi");
                         e.Cancel = true;
                     }
                     else
                     {
+                        lblProses.Invoke(new Action(() => lblProses.Text = "Download data absen berhasil"));
                         MessageBox.Show("Berhasil mendownload " + iValue.ToString() + " data absensi dari mesin");
                     }
                 }

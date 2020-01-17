@@ -82,6 +82,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -142,6 +145,7 @@
     <Compile Include="Class\DataLog.cs" />
     <Compile Include="Class\DataMesin.cs" />
     <Compile Include="Class\DataPegawai.cs" />
+    <Compile Include="Class\IniFile.cs" />
     <Compile Include="Fingerprint.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -256,7 +260,7 @@
       <DependentUpon>Fingerprint.tt</DependentUpon>
     </Compile>
     <Compile Include="Helper\AppSetting.cs" />
-    <Compile Include="Helper\Encrypt.cs" />
+    <Compile Include="Helper\EncryptDecrypt.cs" />
     <Compile Include="Helper\TabMain.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -407,6 +411,9 @@
       <LastGenOutput>Fingerprint.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include=".editorconfig" />
+    <Content Include="app.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Fingerprint.edmx.diagram">
       <DependentUpon>Fingerprint.edmx</DependentUpon>
     </None>

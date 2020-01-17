@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Fingerprint.Class;
+using IniParser;
+using IniParser.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,17 +23,30 @@ namespace Fingerprint
 
         private void FormAturan_Load(object sender, EventArgs e)
         {
-            txtMasuk.Text = Properties.Settings.Default.masuk;
-            txtPulang.Text = Properties.Settings.Default.pulang;
+            try
+            {
+                var parser = new FileIniDataParser();
+                IniData data = parser.ReadFile("app.ini");
+
+                txtMasuk.Text = data["MasukPulang"]["Masuk"];
+                txtPulang.Text = data["MasukPulang"]["Pulang"];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnSimpan_Click(object sender, EventArgs e)
         {
             try
             {
-                Properties.Settings.Default.masuk = txtMasuk.Text;
-                Properties.Settings.Default.pulang = txtPulang.Text;
-                Properties.Settings.Default.Save();
+                var parser = new FileIniDataParser();
+                IniData data = parser.ReadFile("app.ini");
+
+                data["MasukPulang"]["Masuk"] = txtMasuk.Text;
+                data["MasukPulang"]["Pulang"] = txtPulang.Text;
+                parser.WriteFile("app.ini", data);
                 this.Close();
             }
             catch (Exception ex)

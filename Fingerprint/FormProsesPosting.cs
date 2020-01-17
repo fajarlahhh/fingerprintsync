@@ -5,6 +5,8 @@ using System.Threading;
 using zkemkeeper;
 using System.Collections.Generic;
 using Fingerprint.View;
+using IniParser;
+using IniParser.Model;
 
 namespace Fingerprint
 {
@@ -14,14 +16,17 @@ namespace Fingerprint
         readonly fingerprintEntities fp = new fingerprintEntities();
         public DateTime tgl1 { get; set; }
         public DateTime tgl2 { get; set; }
-        //string kd_masuk = "";
-        //string kd_pulang = "";
+        string kd_masuk = "";
+        string kd_pulang = "";
 
         public FormProsesPosting()
         {
             InitializeComponent();
-            //kd_masuk = Properties.Settings.Default.masuk;
-            //kd_pulang = Properties.Settings.Default.pulang;
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile("app.ini");
+
+            kd_masuk = data["MasukPulang"]["Masuk"];
+            kd_pulang = data["MasukPulang"]["Pulang"];
             //if(kd_masuk.Length == 0 || kd_pulang.Length == 0)
             //{
             //    MessageBox.Show("Mohon setting kode masuk dan kode pulang");
@@ -115,7 +120,16 @@ namespace Fingerprint
                         DateTime absen_tanggal = tgl;
                         string absen_izin = izin.Where(x => x.izin_tanggal.Equals(tgl) && x.pegawai_id.Equals(pegawai_id)).Select(x => x.izin_jenis).SingleOrDefault();
 
-                        TimeSpan absen_masuk = log.Where(x => x.pegawai_id.Equals(pegawai_id) && x.log_tanggal.Equals(tgl)).OrderBy(x => x.log_jam).Select(x => x.log_jam).FirstOrDefault();
+                        TimeSpan absen_masuk = TimeSpan.Parse("00:00:00");
+                        if (kd_masuk != "")
+                        {
+                            absen_masuk = log.Where(x => x.pegawai_id.Equals(pegawai_id) && x.log_tanggal.Equals(tgl) && x.log_status.Equals(kd_masuk)).OrderBy(x => x.log_jam).Select(x => x.log_jam).FirstOrDefault();
+                        }
+                        else
+                        {
+                            absen_masuk = log.Where(x => x.pegawai_id.Equals(pegawai_id) && x.log_tanggal.Equals(tgl)).OrderBy(x => x.log_jam).Select(x => x.log_jam).FirstOrDefault();
+                        }
+
                         TimeSpan absen_telat = TimeSpan.Parse("00:00:00");
                         if (absen_hari == "b")
                         {
@@ -123,7 +137,16 @@ namespace Fingerprint
                                 absen_telat = absen_masuk - aturan.aturan_jam_masuk;
                         }
 
-                        TimeSpan absen_pulang = log.Where(x => x.pegawai_id.Equals(pegawai_id) && x.log_tanggal.Equals(tgl)).OrderByDescending(x => x.log_jam).Select(x => x.log_jam).FirstOrDefault();
+                        TimeSpan absen_pulang = TimeSpan.Parse("00:00:00");
+                        if (kd_pulang != "")
+                        {
+                            absen_pulang = log.Where(x => x.pegawai_id.Equals(pegawai_id) && x.log_tanggal.Equals(tgl) && x.log_status.Equals(kd_pulang)).OrderByDescending(x => x.log_jam).Select(x => x.log_jam).FirstOrDefault();
+                        }
+                        else
+                        {
+                            absen_pulang = log.Where(x => x.pegawai_id.Equals(pegawai_id) && x.log_tanggal.Equals(tgl)).OrderByDescending(x => x.log_jam).Select(x => x.log_jam).FirstOrDefault();
+                        }
+
                         
                         absen data = new absen()
                         {

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using Fingerprint.Class;
+using IniParser.Model;
+using IniParser;
 
 namespace Fingerprint.View
 {
@@ -24,7 +26,10 @@ namespace Fingerprint.View
         private void UcPegawai_Load(object sender, EventArgs e)
         {
             GetData();
-            if(Properties.Settings.Default.kantor_mesin == "T")
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile("app.ini");
+
+            if (data["Sekolah"]["SupportMesin"] == "T")
             {
                 btnImport.Enabled = true;
             }

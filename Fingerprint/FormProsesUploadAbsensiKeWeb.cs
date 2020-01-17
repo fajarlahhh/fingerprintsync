@@ -12,6 +12,8 @@ using System.Net.Http;
 using MyTested.WebApi;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using IniParser.Model;
+using IniParser;
 
 namespace Fingerprint
 {
@@ -28,7 +30,17 @@ namespace Fingerprint
         {
             InitializeComponent();
             this.url = setting.GetConnectionString("api");
-            this.kantor = Properties.Settings.Default.kantor_id;
+            try
+            {
+                var parser = new FileIniDataParser();
+                IniData data = parser.ReadFile("app.ini");
+
+                kantor = data["Sekolah"]["IDSekolah"];
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         List<string> gagal = new List<string>();

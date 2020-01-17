@@ -1,5 +1,7 @@
 ﻿using Fingerprint.Helper;
 using Fingerprint.View;
+using IniParser;
+using IniParser.Model;
 using SharpUpdate;
 using System;
 using System.Collections.Generic;
@@ -27,7 +29,6 @@ namespace Fingerprint
             thread.Start();
             Thread.Sleep(2000);
             InitializeComponent();
-            fp.Database.Connection.Open();
             thread.Abort();
         }
 
@@ -39,14 +40,23 @@ namespace Fingerprint
         private void FormMain_Load(object sender, EventArgs e)
         {
             this.Activate();
-            AppSetting setting = new AppSetting();
-            this.Text = this.Text + " v"+ Assembly.GetExecutingAssembly().GetName().Version.ToString() + " - " + Properties.Settings.Default.kantor_nama + ", " + Properties.Settings.Default.kantor_lokasi;
+            try {
+                var parser = new FileIniDataParser();
+                IniData data = parser.ReadFile("app.ini");
 
-            if (string.IsNullOrEmpty(Properties.Settings.Default.kantor_id) == true)
+                this.Text = this.Text + " v" + Assembly.GetExecutingAssembly().GetName().Version.ToString() + " - " + data["Sekolah"]["NamaSekolah"] + ", " + data["Sekolah"]["LokasiSekolah"];
+
+
+                if (string.IsNullOrEmpty(data["Sekolah"]["IDSekolah"]) == true)
+                {
+                    FormSetKodeKantor setKantor = new FormSetKodeKantor();
+                    setKantor.StartPosition = FormStartPosition.CenterParent;
+                    setKantor.ShowDialog(this);
+                }
+            }
+            catch(Exception ex)
             {
-                FormSetKodeKantor setKantor = new FormSetKodeKantor();
-                setKantor.StartPosition = FormStartPosition.CenterParent;
-                setKantor.ShowDialog(this);
+                MessageBox.Show(ex.Message);
             }
         }
 

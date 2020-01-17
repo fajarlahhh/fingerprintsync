@@ -56,8 +56,8 @@
             this.uploadPegawaiKeWebToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bantuanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bukuManualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabMain = new Fingerprint.Helper.TabMain();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabMain = new Fingerprint.Helper.TabMain();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -155,7 +155,6 @@
             this.kodeMasukPulangToolStripMenuItem.Name = "kodeMasukPulangToolStripMenuItem";
             this.kodeMasukPulangToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.kodeMasukPulangToolStripMenuItem.Text = "Kode Masuk/Pulang";
-            this.kodeMasukPulangToolStripMenuItem.Visible = false;
             this.kodeMasukPulangToolStripMenuItem.Click += new System.EventHandler(this.kodeMasukPulangToolStripMenuItem_Click);
             // 
             // absensiToolStripMenuItem
@@ -268,9 +267,16 @@
             // bukuManualToolStripMenuItem
             // 
             this.bukuManualToolStripMenuItem.Name = "bukuManualToolStripMenuItem";
-            this.bukuManualToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bukuManualToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.bukuManualToolStripMenuItem.Text = "Buku Manual";
             this.bukuManualToolStripMenuItem.Click += new System.EventHandler(this.bukuManualToolStripMenuItem_Click);
+            // 
+            // updateToolStripMenuItem
+            // 
+            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.updateToolStripMenuItem.Text = "Update";
+            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // tabMain
             // 
@@ -282,13 +288,6 @@
             this.tabMain.SelectedIndex = 0;
             this.tabMain.Size = new System.Drawing.Size(776, 411);
             this.tabMain.TabIndex = 11;
-            // 
-            // updateToolStripMenuItem
-            // 
-            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.updateToolStripMenuItem.Text = "Update";
-            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // FormMain
             // 

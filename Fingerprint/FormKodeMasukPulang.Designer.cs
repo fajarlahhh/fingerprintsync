@@ -38,7 +38,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 34);
+            this.label7.Location = new System.Drawing.Point(12, 15);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(39, 13);
             this.label7.TabIndex = 6;
@@ -47,7 +47,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 61);
+            this.label1.Location = new System.Drawing.Point(12, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 21;
@@ -55,7 +55,7 @@
             // 
             // btnSimpan
             // 
-            this.btnSimpan.Location = new System.Drawing.Point(49, 84);
+            this.btnSimpan.Location = new System.Drawing.Point(49, 65);
             this.btnSimpan.Name = "btnSimpan";
             this.btnSimpan.Size = new System.Drawing.Size(75, 23);
             this.btnSimpan.TabIndex = 57;
@@ -65,7 +65,7 @@
             // 
             // txtMasuk
             // 
-            this.txtMasuk.Location = new System.Drawing.Point(107, 31);
+            this.txtMasuk.Location = new System.Drawing.Point(107, 12);
             this.txtMasuk.MaxLength = 1;
             this.txtMasuk.Name = "txtMasuk";
             this.txtMasuk.Size = new System.Drawing.Size(53, 20);
@@ -74,7 +74,7 @@
             // 
             // txtPulang
             // 
-            this.txtPulang.Location = new System.Drawing.Point(107, 58);
+            this.txtPulang.Location = new System.Drawing.Point(107, 39);
             this.txtPulang.MaxLength = 1;
             this.txtPulang.Name = "txtPulang";
             this.txtPulang.Size = new System.Drawing.Size(53, 20);
@@ -86,7 +86,7 @@
             this.AcceptButton = this.btnSimpan;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(172, 121);
+            this.ClientSize = new System.Drawing.Size(172, 105);
             this.Controls.Add(this.txtPulang);
             this.Controls.Add(this.txtMasuk);
             this.Controls.Add(this.btnSimpan);
