@@ -39,14 +39,17 @@ namespace Fingerprint
                 bwDownload.ReportProgress(0);
                 lblProses.Invoke(new Action(() => lblProses.Text = "Melakukan koneksi ke mesin " + msn.mesin_nama + ", IP " + msn.mesin_ip + ", port " + msn.mesin_key));
                 bIsConnected = axCZKEM1.Connect_Net(msn.mesin_ip.Trim(), Convert.ToInt32(msn.mesin_key.Trim()));
-                if (bIsConnected == true)
+                if (bIsConnected == false)
                 {
-                    lblProses.Invoke(new Action(() => lblProses.Text = "Koneksi ke mesin " + msn.mesin_nama + ", IP " + msn.mesin_ip + ", port " + msn.mesin_key + " berhasil"));
-                        
-                    //axCZKEM1.RegEvent(iMachineNumber, 65535);
-                    //axCZKEM1.EnableDevice(iMachineNumber, false);
+                    axCZKEM1.GetLastError(ref idwErrorCode);
+                    MessageBox.Show("Unable to connect the device,ErrorCode=" + idwErrorCode.ToString(), "Error");
+                    e.Cancel = true;
+                    return;
+                }
+                //axCZKEM1.RegEvent(iMachineNumber, 65535);
+                //axCZKEM1.EnableDevice(iMachineNumber, false);
 
-                    string sdwEnrollNumber = "";
+                string sdwEnrollNumber = "";
                     string sName = "";
                     string sPassword = "";
                     int iPrivilege = 0;
@@ -88,13 +91,6 @@ namespace Fingerprint
                     lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data pegawai ke database"));
                     fp.SaveChanges();
                     axCZKEM1.EnableDevice(iMachineNumber, true);
-                }
-                else
-                {
-                    axCZKEM1.GetLastError(ref idwErrorCode);
-                    MessageBox.Show("Unable to connect the device,ErrorCode=" + idwErrorCode.ToString(), "Error");
-                    e.Cancel = true;
-                }
             }
             lblProses.Invoke(new Action(() => lblProses.Text = "Download data pegawai berhasil"));
             MessageBox.Show("Download data pegawai berhasil");

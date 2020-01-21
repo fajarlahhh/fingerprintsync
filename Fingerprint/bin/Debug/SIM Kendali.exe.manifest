@@ -79,14 +79,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interop.zkemkeeper.dll" size="52224">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interop.zkemkeeper.dll" size="51712">
       <assemblyIdentity name="Interop.zkemkeeper" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>5cCoZZBtNYowap6Idb0w1XdCyLQUttFw6g1dGKQlcX8=</dsig:DigestValue>
+        <dsig:DigestValue>4z79Ph9MYkwHgBiFvHUy0zZUy75YuKFiv+Ki6/MVtA4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -182,7 +182,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Q0lcxtzxs6fslK61k4bEiwQJSD/fZuGMypssC8zaHfg=</dsig:DigestValue>
+        <dsig:DigestValue>nuhZwkPz2Usprs1ckpHT+AoKLx9+z8hKqSrwT9FClx0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
