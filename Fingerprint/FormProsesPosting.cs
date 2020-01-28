@@ -50,6 +50,7 @@ namespace Fingerprint
                 {
                     MessageBox.Show("Tidak dapat memposting.\nMasih ada data pegawai dengan nip kosong");
                     e.Cancel = true;
+                    return;
                 }
 
                 upload_download upload = new upload_download();

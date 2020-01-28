@@ -46,51 +46,45 @@ namespace Fingerprint
                     e.Cancel = true;
                     return;
                 }
-                //axCZKEM1.RegEvent(iMachineNumber, 65535);
-                //axCZKEM1.EnableDevice(iMachineNumber, false);
 
                 string sdwEnrollNumber = "";
-                    string sName = "";
-                    string sPassword = "";
-                    int iPrivilege = 0;
-                    bool bEnabled = false;
+                string sName = "";
+                string sPassword = "";
+                int iPrivilege = 0;
+                bool bEnabled = false;
 
-                    axCZKEM1.EnableDevice(iMachineNumber, false);
-
-                    //axCZKEM1.ReadAllUserID(iMachineNumber);//read all the user information to the memory
-                    //axCZKEM1.ReadAllTemplate(iMachineNumber);//read all the users' fingerprint templates to the memory
-                        
-                    lblProses.Invoke(new Action(() => lblProses.Text = "Mendownload data Pegawai dari mesin"));
-                    while (axCZKEM1.SSR_GetAllUserInfo(iMachineNumber, out sdwEnrollNumber, out sName, out sPassword, out iPrivilege, out bEnabled))//get all the users' information from the memory
+                axCZKEM1.EnableDevice(iMachineNumber, false);
+                lblProses.Invoke(new Action(() => lblProses.Text = "Mendownload data Pegawai dari mesin"));
+                while (axCZKEM1.SSR_GetAllUserInfo(iMachineNumber, out sdwEnrollNumber, out sName, out sPassword, out iPrivilege, out bEnabled))//get all the users' information from the memory
+                {
+                    try
                     {
-                        try
+                        if (fp.pegawais.Where(x => x.pegawai_id.Equals(sdwEnrollNumber)).Count() == 0)
                         {
-                            if (fp.pegawais.Where(x => x.pegawai_id.Equals(sdwEnrollNumber)).Count() == 0)
-                            {
-                                pegawai data = new pegawai();
-                                data.pegawai_id = sdwEnrollNumber;
-                                data.pegawai_nip = "";
-                                data.pegawai_nama = "";
-                                data.pegawai_panggilan = sName;
-                                data.pegawai_golongan = "";
-                                data.pegawai_jenis_kelamin = "";
-                                data.pegawai_izin = iPrivilege == 3 ? "0" : "1";
-                                data.pegawai_sandi = sPassword;
-                                data.upload = true;
-                                fp.pegawais.Add(data);
-                                lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data ID " + sdwEnrollNumber + ", nama " + sName + ", BERHASIL"));
-                            }
-                        }
-                        catch
-                        {
-                            gagal.Add("ID " + sdwEnrollNumber + ", nama " + sName);
-                            lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data ID " + sdwEnrollNumber + ", nama " + sName + ", GAGAL"));
+                            pegawai data = new pegawai();
+                            data.pegawai_id = sdwEnrollNumber;
+                            data.pegawai_nip = "";
+                            data.pegawai_nama = "";
+                            data.pegawai_panggilan = sName;
+                            data.pegawai_golongan = "";
+                            data.pegawai_jenis_kelamin = "";
+                            data.pegawai_izin = iPrivilege == 3 ? "0" : "1";
+                            data.pegawai_sandi = sPassword;
+                            data.upload = true;
+                            fp.pegawais.Add(data);
+                            lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data ID " + sdwEnrollNumber + ", nama " + sName + ", BERHASIL"));
                         }
                     }
-                    bwDownload.ReportProgress(100);
-                    lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data pegawai ke database"));
-                    fp.SaveChanges();
-                    axCZKEM1.EnableDevice(iMachineNumber, true);
+                    catch
+                    {
+                        gagal.Add("ID " + sdwEnrollNumber + ", nama " + sName);
+                        lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data ID " + sdwEnrollNumber + ", nama " + sName + ", GAGAL"));
+                    }
+                }
+                bwDownload.ReportProgress(100);
+                lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data pegawai ke database"));
+                fp.SaveChanges();
+                axCZKEM1.EnableDevice(iMachineNumber, true);
             }
             lblProses.Invoke(new Action(() => lblProses.Text = "Download data pegawai berhasil"));
             MessageBox.Show("Download data pegawai berhasil");

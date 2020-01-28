@@ -175,14 +175,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SIM Kendali.exe" size="1165824">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SIM Kendali.exe" size="1165312">
       <assemblyIdentity name="SIM Kendali" version="1.2.1.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nuhZwkPz2Usprs1ckpHT+AoKLx9+z8hKqSrwT9FClx0=</dsig:DigestValue>
+        <dsig:DigestValue>aCxA2DG+3UA8jkrYsfiA+wj2CZNAiEJlP7bbXfsusgk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

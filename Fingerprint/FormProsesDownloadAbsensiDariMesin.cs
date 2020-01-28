@@ -40,6 +40,7 @@ namespace Fingerprint
                 bwDownload.ReportProgress(0);
                 lblProses.Invoke(new Action(() => lblProses.Text = "Melakukan koneksi ke mesin " + msn.mesin_nama + ", IP " + msn.mesin_ip + ", port " + msn.mesin_key));
                 bIsConnected = axCZKEM1.Connect_Net(msn.mesin_ip, Convert.ToInt32(msn.mesin_key));
+
                 if (bIsConnected == false)
                 {
                     axCZKEM1.GetLastError(ref idwErrorCode);
