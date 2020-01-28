@@ -47,6 +47,7 @@ namespace Fingerprint
                 {
                     axCZKEM1.GetLastError(ref idwErrorCode);
                     lblProses.Invoke(new Action(() => lblProses.Text = "Koneksi ke mesin " + msn.mesin_nama + ", IP " + msn.mesin_ip + ", port " + msn.mesin_key + " GAGAL " + idwErrorCode.ToString()));
+                    gagal.Add("gagal");
                 }
                 else
                 {
