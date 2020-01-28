@@ -201,6 +201,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_AF6FC1A9534E38039DB539B90977D423"
+        "OwnerKey" = "8:_370B0EEED62248168A4DC682DABA256E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C214A5A98AFED385F41822892005BD36"
         "OwnerKey" = "8:_370B0EEED62248168A4DC682DABA256E"
         "MsmSig" = "8:_UNDEFINED"
@@ -231,12 +237,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F97E573FB9F1375F19BF86125E3A9246"
-        "OwnerKey" = "8:_370B0EEED62248168A4DC682DABA256E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_FA7D67F957B4D452C58453BA8D0C0031"
         "OwnerKey" = "8:_370B0EEED62248168A4DC682DABA256E"
         "MsmSig" = "8:_UNDEFINED"
@@ -245,12 +245,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_370B0EEED62248168A4DC682DABA256E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F97E573FB9F1375F19BF86125E3A9246"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -323,6 +317,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_3EC5E4264C6967DFFBD1570D1621AF41"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_AF6FC1A9534E38039DB539B90977D423"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -790,6 +790,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AF6FC1A9534E38039DB539B90977D423"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_AF6FC1A9534E38039DB539B90977D423"
+                    {
+                    "Name" = "8:INIFileParser.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:INIFileParser.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E86B8D8042EE4352BC49CAAD392E062D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C214A5A98AFED385F41822892005BD36"
             {
             "AssemblyRegister" = "3:1"
@@ -903,37 +934,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F97E573FB9F1375F19BF86125E3A9246"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_F97E573FB9F1375F19BF86125E3A9246"
-                    {
-                    "Name" = "8:INIFileParser.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:INIFileParser.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_E86B8D8042EE4352BC49CAAD392E062D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FA7D67F957B4D452C58453BA8D0C0031"
             {
             "AssemblyRegister" = "3:1"
@@ -1043,23 +1043,23 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SIM Kendali"
-        "ProductCode" = "8:{FFF87BBC-4B3A-44C3-A0FC-A9D0C1EDFAE3}"
-        "PackageCode" = "8:{D24E86A9-6A9E-4057-9D24-0A17284648DD}"
+        "ProductCode" = "8:{0B85F4AA-D665-47B6-BC89-76B5CCE718B1}"
+        "PackageCode" = "8:{9394A442-A481-4CF8-B8EC-FFA13B7474C0}"
         "UpgradeCode" = "8:{06658129-22D8-4205-AE2A-70CF03C3D141}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.2.1"
-        "Manufacturer" = "8:Lestari Informatika"
+        "ProductVersion" = "8:1.2.2"
+        "Manufacturer" = "8:FingerprintSync"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Setup SIM Kendali"
+        "Title" = "8:SIM Kendali"
         "Subject" = "8:"
         "ARPCONTACT" = "8:andifajarlah@gmail.com"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:SIM Kendali"
+        "ARPCOMMENTS" = "8:SIM Kendali Tendik"
         "ARPURLINFOABOUT" = "8:"
         "ARPPRODUCTICON" = "8:_38DD99A928C64EB9A408CD0F780FEA97"
         "ARPIconIndex" = "3:0"

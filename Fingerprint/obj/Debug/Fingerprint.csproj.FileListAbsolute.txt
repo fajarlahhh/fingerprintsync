@@ -10,7 +10,6 @@ D:\Project C#\Fingerprint\Fingerprint\bin\Debug\SIM Kendali.exe
 D:\Project C#\Fingerprint\Fingerprint\bin\Debug\SIM Kendali.pdb
 D:\Project C#\Fingerprint\Fingerprint\bin\Debug\EntityFramework.dll
 D:\Project C#\Fingerprint\Fingerprint\bin\Debug\EntityFramework.SqlServer.dll
-D:\Project C#\Fingerprint\Fingerprint\bin\Debug\INIFileParser.dll
 D:\Project C#\Fingerprint\Fingerprint\bin\Debug\Microsoft.Owin.dll
 D:\Project C#\Fingerprint\Fingerprint\bin\Debug\Microsoft.Owin.Hosting.dll
 D:\Project C#\Fingerprint\Fingerprint\bin\Debug\Microsoft.Owin.Testing.dll
@@ -65,3 +64,4 @@ D:\Project C#\Fingerprint\Fingerprint\obj\Debug\SIM Kendali.application
 D:\Project C#\Fingerprint\Fingerprint\obj\Debug\Fingerprint.csproj.CopyComplete
 D:\Project C#\Fingerprint\Fingerprint\obj\Debug\SIM Kendali.exe
 D:\Project C#\Fingerprint\Fingerprint\obj\Debug\SIM Kendali.pdb
+D:\Project C#\Fingerprint\Fingerprint\bin\Debug\INIFileParser.dll

@@ -203,6 +203,7 @@ namespace Fingerprint.View
                     axCZKEM1.GetLastError(ref idwErrorCode);
                     MessageBox.Show("Unable to connect the device,ErrorCode=" + idwErrorCode.ToString(), "Error");
                 }
+                axCZKEM1.Disconnect();
             }
         }
 

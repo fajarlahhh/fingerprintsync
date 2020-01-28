@@ -43,10 +43,9 @@
             // 
             // lblProses
             // 
-            this.lblProses.AutoSize = true;
             this.lblProses.Location = new System.Drawing.Point(9, 51);
             this.lblProses.Name = "lblProses";
-            this.lblProses.Size = new System.Drawing.Size(0, 13);
+            this.lblProses.Size = new System.Drawing.Size(497, 52);
             this.lblProses.TabIndex = 4;
             // 
             // bwDownload
@@ -72,7 +71,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(518, 87);
+            this.ClientSize = new System.Drawing.Size(518, 112);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblProses);
             this.Controls.Add(this.progressBar);

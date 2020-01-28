@@ -495,6 +495,7 @@
             this.sandi.HeaderText = "Sandi";
             this.sandi.Name = "sandi";
             this.sandi.ReadOnly = true;
+            this.sandi.Visible = false;
             // 
             // upload
             // 

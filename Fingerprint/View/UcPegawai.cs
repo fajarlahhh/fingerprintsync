@@ -227,11 +227,14 @@ namespace Fingerprint.View
                                 int idwErrorCode = 0;
 
                                 var mesin = fp.mesins.ToList();
+                                int no = 1;
                                 foreach (var msn in mesin)
                                 {
                                     bIsConnected = axCZKEM1.Connect_Net(msn.mesin_ip.Trim(), Convert.ToInt32(msn.mesin_key.Trim()));
                                     if (bIsConnected == true)
                                     {
+                                        iMachineNumber = no;
+                                        axCZKEM1.RegEvent(iMachineNumber, 65535);
                                         if (axCZKEM1.SSR_DeleteEnrollData(iMachineNumber, pegawai_id, 12))
                                         {
                                             axCZKEM1.RefreshData(iMachineNumber);
@@ -243,16 +246,15 @@ namespace Fingerprint.View
                                         {
                                             axCZKEM1.GetLastError(ref idwErrorCode);
                                             MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
-                                            return;
                                         }
                                     }
                                     else
                                     {
                                         axCZKEM1.GetLastError(ref idwErrorCode);
                                         MessageBox.Show("Unable to connect the device,ErrorCode=" + idwErrorCode.ToString(), "Error");
-                                        return;
                                     }
-                                    iMachineNumber += 1;
+                                    no += 1;
+                                    axCZKEM1.Disconnect();
                                 }
                             }
                             else
@@ -293,7 +295,7 @@ namespace Fingerprint.View
                     txtGolongan.Text = row.Cells[4].Value.ToString();
                     cbJenisKelamin.Text = row.Cells[5].Value.ToString();
                     cbHakAkses.Text = row.Cells[6].Value.ToString();
-                    txtSandi.Text = row.Cells[7].Value.ToString();
+                    //txtSandi.Text = row.Cells[7].Value.ToString();
                     sincron = Convert.ToBoolean(row.Cells[8].Value);
                 }
             }
@@ -349,12 +351,21 @@ namespace Fingerprint.View
             int idwErrorCode = 0;
 
             var mesin = fp.mesins.ToList();
+            int no = 1;
 
             foreach (var msn in mesin)
             {
                 bIsConnected = axCZKEM1.Connect_Net(msn.mesin_ip.Trim(), Convert.ToInt32(msn.mesin_key.Trim()));
-                if (bIsConnected == true)
+
+                if (bIsConnected == false)
                 {
+                    axCZKEM1.GetLastError(ref idwErrorCode);
+                    MessageBox.Show("Unable to connect the device,ErrorCode=" + idwErrorCode.ToString(), "Error");
+                }
+                else
+                {
+                    iMachineNumber = no;
+                    axCZKEM1.RegEvent(iMachineNumber, 65535);
                     int iUpdateFlag = 1;
                     axCZKEM1.EnableDevice(iMachineNumber, false);
                     if (axCZKEM1.BeginBatchUpdate(iMachineNumber, iUpdateFlag))
@@ -363,11 +374,9 @@ namespace Fingerprint.View
                         {
                             axCZKEM1.GetLastError(ref idwErrorCode);
                             MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
-                            axCZKEM1.EnableDevice(iMachineNumber, true);
                         }
                         else
                         {
-
                             var pegawai = fp.pegawais.Where(x => x.pegawai_id.Equals(id == null? pegawai_id: id)).FirstOrDefault();
                             pegawai.upload = true;
                             fp.SaveChanges();
@@ -377,12 +386,8 @@ namespace Fingerprint.View
                     axCZKEM1.RefreshData(iMachineNumber);
                     axCZKEM1.EnableDevice(iMachineNumber, true);
                 }
-                else
-                {
-                    axCZKEM1.GetLastError(ref idwErrorCode);
-                    MessageBox.Show("Unable to connect the device,ErrorCode=" + idwErrorCode.ToString(), "Error");
-                }
-                iMachineNumber += 1;
+                no += 1;
+                axCZKEM1.Disconnect();
             }
         }
 
@@ -421,7 +426,7 @@ namespace Fingerprint.View
             try
             {
                 string cari = txtCari.Text;
-                List<DataPegawai> filterPegawai = pegawai.Where(x => x.nip.ToLower().Contains(cari.ToLower()) || x.nama.ToLower().Contains(cari.ToLower()) || x.panggilan.ToLower().Contains(cari.ToLower())).ToList();
+                List<DataPegawai> filterPegawai = pegawai.Where(x => x.nip.ToLower().Contains(cari.ToLower()) || x.id.ToLower().Contains(cari.ToLower()) || x.nama.ToLower().Contains(cari.ToLower()) || x.panggilan.ToLower().Contains(cari.ToLower())).ToList();
                 dgPegawai.DataSource = filterPegawai;
 
                 lblJumlah.Text = "Jumlah Pegawai : " + filterPegawai.Count;

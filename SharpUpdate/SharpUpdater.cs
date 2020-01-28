@@ -117,13 +117,13 @@ namespace SharpUpdate
         private void BgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             // If there is a file on the server
-			if (!e.Cancelled)
-			{
+            if (!e.Cancelled)
+            {
                 JobsFromXML = (SharpUpdateXml[])e.Result;
 
-				// Check if the update is not null and is a newer version than the current application
-				if (JobsFromXML != null)
-				{
+                // Check if the update is not null and is a newer version than the current application
+                if (JobsFromXML != null)
+                {
                     Console.WriteLine("Number of updates from XML: " + JobsFromXML.Length);
 
                     // create local app info according to update xml
@@ -183,12 +183,12 @@ namespace SharpUpdate
                 }
                 else
                 {
-                    if(doReport == true)
+                    if (doReport == true)
                         MessageBoxEx.Show(ParentForm, "Anda memiliki aplikasi yang terupdate!");
                 }
-			}
-			else
-				MessageBoxEx.Show(ParentForm, "No update information found!");
+            }
+            else
+                MessageBox.Show("Tidak dapat menemukan informasi update");
         }
 
         /// <summary>

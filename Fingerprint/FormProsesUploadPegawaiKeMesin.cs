@@ -24,6 +24,8 @@ namespace Fingerprint
             bwDownload.CancelAsync();
         }
 
+        List<string> gagal = new List<string>();
+
         private void bwPosting_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             try
@@ -34,12 +36,24 @@ namespace Fingerprint
 
                 lblProses.Invoke(new Action(() => lblProses.Text = "Mengambil data mesin"));
                 var mesin = fp.mesins.ToList();
+                int no = 1;
+                int jumlah = 0;
                 foreach (var msn in mesin)
                 {
+                    progressBar.Value = 0;
+                    bwDownload.ReportProgress(0);
                     lblProses.Invoke(new Action(() => lblProses.Text = "Melakukan koneksi ke mesin " + msn.mesin_nama + ", IP " + msn.mesin_ip + ", port " + msn.mesin_key));
                     bIsConnected = axCZKEM1.Connect_Net(msn.mesin_ip, Convert.ToInt32(msn.mesin_key));
-                    if (bIsConnected == true)
+
+                    if (bIsConnected == false)
                     {
+                        axCZKEM1.GetLastError(ref idwErrorCode);
+                        lblProses.Invoke(new Action(() => lblProses.Text = "Koneksi ke mesin " + msn.mesin_nama + ", IP " + msn.mesin_ip + ", port " + msn.mesin_key + " GAGAL " + idwErrorCode.ToString()));
+                    }
+                    else
+                    {
+                        iMachineNumber = no;
+                        axCZKEM1.RegEvent(iMachineNumber, 65535);
 
                         int iUpdateFlag = 1;
                         axCZKEM1.EnableDevice(iMachineNumber, false);
@@ -67,45 +81,43 @@ namespace Fingerprint
                                 iPrivilege = row.pegawai_izin == "0" ? 3 : 0;
                                 sPassword = row.pegawai_sandi;
 
-                                if (sdwEnrollNumber != sLastEnrollNumber)//identify whether the user information(except fingerprint templates) has been uploaded
+                                if (axCZKEM1.SSR_SetUserInfo(iMachineNumber, sdwEnrollNumber, sName, sPassword, iPrivilege, bEnabled))
                                 {
-                                    if (axCZKEM1.SSR_SetUserInfo(iMachineNumber, sdwEnrollNumber, sName, sPassword, iPrivilege, bEnabled))//upload user information to the memory
-                                    {
-                                        lblProses.Invoke(new Action(() => lblProses.Text = "Mengupload data pegawai " + nip));
-                                    }
-                                    else
-                                    {
-                                        axCZKEM1.GetLastError(ref idwErrorCode);
-                                        MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
-                                        axCZKEM1.EnableDevice(iMachineNumber, true);
-                                        return;
-                                    }
+                                    lblProses.Invoke(new Action(() => lblProses.Text = "Mengupload data pegawai " + nip));
+                                    var data = fp.pegawais.Where(x => x.pegawai_id.Equals(sdwEnrollNumber)).FirstOrDefault();
+                                    data.upload = true;
+                                    fp.SaveChanges();
+                                    jumlah += 1;
                                 }
-                                else//the current fingerprint and the former one belongs the same user,that is ,one user has more than one template
+                                else
                                 {
-                                    axCZKEM1.SetUserTmpExStr(iMachineNumber, sdwEnrollNumber, idwFingerIndex, iFlag, sTmpData);
+                                    axCZKEM1.GetLastError(ref idwErrorCode);
+                                    lblProses.Invoke(new Action(() => lblProses.Text = "Operation failed,ErrorCode=" + idwErrorCode.ToString()));
+                                    gagal.Add("ID " + sdwEnrollNumber + ", nip " + nip);
                                 }
-                                sLastEnrollNumber = sdwEnrollNumber;//change the value of iLastEnrollNumber dynamicly
 
                                 int percentage = nomor * 100 / iValue;
                                 nomor++;
                                 bwDownload.ReportProgress(percentage);
                             }
                         }
-                        bwDownload.ReportProgress(100);
-                        lblProses.Invoke(new Action(() => lblProses.Text = "Upload data pegawai berhasil"));
-                        MessageBox.Show("Upload data pegawai berhasil");
                         axCZKEM1.BatchUpdate(iMachineNumber);//upload all the information in the memory
                         axCZKEM1.RefreshData(iMachineNumber);//the data in the device should be refreshed
                         axCZKEM1.EnableDevice(iMachineNumber, true);                        
                     }
-                    else
-                    {
-                        axCZKEM1.GetLastError(ref idwErrorCode);
-                        MessageBox.Show("Unable to connect the device,ErrorCode=" + idwErrorCode.ToString(), "Error");
-                        e.Cancel = true;
-                    }
-                    iMachineNumber += 1;
+                    no += 1;
+                    axCZKEM1.Disconnect();
+                }
+                if (gagal.Count > 0)
+                {
+                    lblProses.Invoke(new Action(() => lblProses.Text = "Gagal mengupload " + gagal.Count + " data pegawai"));
+                    MessageBox.Show("Gagal mendownload " + gagal.Count + " data pegawai");
+                    e.Cancel = true;
+                }
+                else
+                {
+                    lblProses.Invoke(new Action(() => lblProses.Text = "Berhasil mengupload " + jumlah.ToString() + " data pegawai ke mesin"));
+                    MessageBox.Show("Berhasil mengupload " + jumlah.ToString() + " data pegawai ke mesin");
                 }
             }
             catch(Exception ex)

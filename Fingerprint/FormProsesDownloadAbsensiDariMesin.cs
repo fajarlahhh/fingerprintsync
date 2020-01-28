@@ -31,125 +31,129 @@ namespace Fingerprint
             bool bIsConnected = false;
             int iMachineNumber = 1;
             int idwErrorCode = 0;
-            fp.Configuration.AutoDetectChangesEnabled = false;
-            fp.Configuration.ValidateOnSaveEnabled = false;
+
             lblProses.Invoke(new Action(() => lblProses.Text = "Mengambil data mesin"));
+            var mesin = fp.mesins.ToList();
+            int no = 1;
+            int jumlah = 0;
             foreach (var msn in mesin)
             {
                 progressBar.Value = 0;
                 bwDownload.ReportProgress(0);
                 lblProses.Invoke(new Action(() => lblProses.Text = "Melakukan koneksi ke mesin " + msn.mesin_nama + ", IP " + msn.mesin_ip + ", port " + msn.mesin_key));
-                bIsConnected = axCZKEM1.Connect_Net(msn.mesin_ip, Convert.ToInt32(msn.mesin_key));
+                bIsConnected = axCZKEM1.Connect_Net(msn.mesin_ip.Trim(), Convert.ToInt32(msn.mesin_key.Trim()));
 
                 if (bIsConnected == false)
                 {
                     axCZKEM1.GetLastError(ref idwErrorCode);
-                    MessageBox.Show("Unable to connect the device,ErrorCode=" + idwErrorCode.ToString(), "Error");
-                    e.Cancel = true;
-                    return;
+                    lblProses.Invoke(new Action(() => lblProses.Text = "Koneksi ke mesin " + msn.mesin_nama + ", IP " + msn.mesin_ip + ", port " + msn.mesin_key + " GAGAL " + idwErrorCode.ToString()));
                 }
-
-                string sdwEnrollNumber = "";
-                int idwVerifyMode = 0;
-                int idwInOutMode = 0;
-                int idwYear = 0;
-                int idwMonth = 0;
-                int idwDay = 0;
-                int idwHour = 0;
-                int idwMinute = 0;
-                int idwSecond = 0;
-                int idwWorkcode = 0;
-
-                int iValue = 0;
-
-                lblProses.Invoke(new Action(() => lblProses.Text = "Menghitung jumlah data absensi"));
-                axCZKEM1.EnableDevice(iMachineNumber, false);
-                if (axCZKEM1.GetDeviceStatus(iMachineNumber, 6, ref iValue))
+                else
                 {
-                    if (axCZKEM1.ReadGeneralLogData(iMachineNumber))
-                    {
-                        int nomor = 1;
-                        lblProses.Invoke(new Action(() => lblProses.Text = "Mengambil data absensi"));
-                        while (axCZKEM1.SSR_GetGeneralLogData(iMachineNumber, out sdwEnrollNumber, out idwVerifyMode,
-                                    out idwInOutMode, out idwYear, out idwMonth, out idwDay, out idwHour, out idwMinute, out idwSecond, ref idwWorkcode))
-                        {
-                            try
-                            {
-                                log data = new log();
-                                data.pegawai_id = sdwEnrollNumber;
-                                data.log_tanggal = DateTime.Parse(idwYear + "-" + idwMonth + "-" + idwDay);
-                                data.log_jam = TimeSpan.Parse(idwHour + ":" + idwMinute + ":" + idwSecond);
-                                data.log_kode = idwVerifyMode.ToString();
-                                data.log_status = idwInOutMode.ToString();
-                                fp.logs.Add(data);
-                                fp.SaveChanges();
-                                lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data ke " + nomor + "/" + iValue + " ID " + sdwEnrollNumber + ", tanggal " + idwYear + "-" + idwMonth + "-" + idwDay + ", waktu " + idwHour + ":" + idwMinute + ":" + idwSecond + " status " + idwInOutMode.ToString() + ", BERHASIL"));
-                            }
-                            catch
-                            {
-                                gagal.Add("ID " + sdwEnrollNumber + ", tanggal " + idwYear + "-" + idwMonth + "-" + idwDay + ", waktu " + idwHour + ":" + idwMinute + ":" + idwSecond + " status " + idwInOutMode.ToString() + " ke " + nomor + "/" + iValue);
-                                lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data ke " + nomor + "/" + iValue + " ID " + sdwEnrollNumber + ", tanggal " + idwYear + "-" + idwMonth + "-" + idwDay + ", waktu " + idwHour + ":" + idwMinute + ":" + idwSecond + " status " + idwInOutMode.ToString() + ", GAGAL"));
-                            }
-                            int percentage = nomor * 100 / iValue;
-                            nomor++;
-                            bwDownload.ReportProgress(percentage);
-                        }
+                    iMachineNumber = no;
+                    axCZKEM1.RegEvent(iMachineNumber, 65535);
 
-                        //if (axCZKEM1.ClearGLog(iMachineNumber))
-                        //{
-                        //    axCZKEM1.RefreshData(iMachineNumber);
-                        //    lblProses.Invoke(new Action(() => lblProses.Text = "Menghapus Data absen di mesin"));
-                        //}
-                        //else
-                        //{
-                        //    axCZKEM1.GetLastError(ref idwErrorCode);
-                        //    MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
-                        //}
-                    }
-                    else
-                    {
-                        Cursor = Cursors.Default;
-                        axCZKEM1.GetLastError(ref idwErrorCode);
+                    string sdwEnrollNumber = "";
+                    int idwVerifyMode = 0;
+                    int idwInOutMode = 0;
+                    int idwYear = 0;
+                    int idwMonth = 0;
+                    int idwDay = 0;
+                    int idwHour = 0;
+                    int idwMinute = 0;
+                    int idwSecond = 0;
+                    int idwWorkcode = 0;
 
-                        if (idwErrorCode != 0)
+                    int iValue = 0;
+
+                    lblProses.Invoke(new Action(() => lblProses.Text = "Menghitung jumlah data absensi"));
+                    if (axCZKEM1.GetDeviceStatus(iMachineNumber, 6, ref iValue))
+                    {
+                        lblProses.Invoke(new Action(() => lblProses.Text = "Mendownload " + iValue.ToString() + " data absensi"));
+                        axCZKEM1.EnableDevice(iMachineNumber, false);
+                        if (axCZKEM1.ReadGeneralLogData(iMachineNumber))
                         {
-                            MessageBox.Show("Reading data from terminal failed,ErrorCode: " + idwErrorCode.ToString(), "Error");
-                            e.Cancel = true;
-                            return;
+                            var pegawai = fp.pegawais.ToList();
+                            int nomor = 1;
+                            while (axCZKEM1.SSR_GetGeneralLogData(iMachineNumber, out sdwEnrollNumber, out idwVerifyMode,
+                                        out idwInOutMode, out idwYear, out idwMonth, out idwDay, out idwHour, out idwMinute, out idwSecond, ref idwWorkcode))
+                            {
+                                try
+                                {
+                                    if (pegawai.Where(s => s.pegawai_id.Equals(sdwEnrollNumber)).Count() > 0)
+                                    {
+                                        log data = new log();
+                                        data.pegawai_id = sdwEnrollNumber;
+                                        data.log_tanggal = DateTime.Parse(idwYear + "-" + idwMonth + "-" + idwDay);
+                                        data.log_jam = TimeSpan.Parse(idwHour + ":" + idwMinute + ":" + idwSecond);
+                                        data.log_kode = idwVerifyMode.ToString();
+                                        data.log_status = idwInOutMode.ToString();
+                                        fp.logs.Add(data);
+                                        fp.SaveChanges();
+                                        lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data ke " + nomor + "/" + iValue + " ID " + sdwEnrollNumber + ", tanggal " + idwYear + "-" + idwMonth + "-" + idwDay + ", waktu " + idwHour + ":" + idwMinute + ":" + idwSecond + " status " + idwInOutMode.ToString() + ", BERHASIL"));
+                                        jumlah += 1;
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    gagal.Add("ID " + sdwEnrollNumber + ", tanggal " + idwYear + "-" + idwMonth + "-" + idwDay + ", waktu " + idwHour + ":" + idwMinute + ":" + idwSecond + " status " + idwInOutMode.ToString() + " ke " + nomor + "/" + iValue);
+                                    lblProses.Invoke(new Action(() => lblProses.Text = "Menyimpan data ke " + nomor + "/" + iValue + " ID " + sdwEnrollNumber + ", tanggal " + idwYear + "-" + idwMonth + "-" + idwDay + ", waktu " + idwHour + ":" + idwMinute + ":" + idwSecond + " status " + idwInOutMode.ToString() + ", GAGAL " + ex.Message));
+                                }
+                                int percentage = nomor * 100 / iValue;
+                                nomor++;
+                                bwDownload.ReportProgress(percentage);
+                            }
+                            if (axCZKEM1.ClearGLog(iMachineNumber))
+                            {
+                                axCZKEM1.RefreshData(iMachineNumber);
+                                lblProses.Invoke(new Action(() => lblProses.Text = "Menghapus Data absen di mesin"));
+                            }
+                            else
+                            {
+                                axCZKEM1.GetLastError(ref idwErrorCode);
+                                lblProses.Invoke(new Action(() => lblProses.Text = "Operation failed,ErrorCode=" + idwErrorCode.ToString()));
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("No data from terminal returns!", "Error");
-                            e.Cancel = true;
-                            return;
+                            Cursor = Cursors.Default;
+                            axCZKEM1.GetLastError(ref idwErrorCode);
+
+                            if (idwErrorCode != 0)
+                            {
+                                lblProses.Invoke(new Action(() => lblProses.Text = "Reading data from terminal failed,ErrorCode: " + idwErrorCode.ToString().ToString()));
+                            }
+                            else
+                            {
+                                lblProses.Invoke(new Action(() => lblProses.Text = "No data from terminal returns!"));
+                            }
                         }
                     }
+                    else
+                    {
+                        axCZKEM1.GetLastError(ref idwErrorCode);
+                        lblProses.Invoke(new Action(() => lblProses.Text = "Operation failed,ErrorCode=" + idwErrorCode.ToString()));
+                    }
+                    no += 1;
+                    axCZKEM1.Disconnect();
                 }
-                else
-                {
-                    axCZKEM1.GetLastError(ref idwErrorCode);
-                    MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
-                }
-                axCZKEM1.EnableDevice(iMachineNumber, true);
-                bwDownload.ReportProgress(100);
-                if(gagal.Count > 0)
-                {
-                    //FormGagal ggl = new FormGagal(gagal);
-                    lblProses.Invoke(new Action(() => lblProses.Text = "Download " + gagal.Count + " data absen gagal"));
-                    MessageBox.Show("Gagal mendownload " + gagal.Count + " data absensi");
-                    e.Cancel = true;
-                }
-                else
-                {
-                    lblProses.Invoke(new Action(() => lblProses.Text = "Download data absen berhasil"));
-                    MessageBox.Show("Berhasil mendownload " + iValue.ToString() + " data absensi dari mesin");
-                }
-                iMachineNumber += 1;
+            }
+            if (gagal.Count > 0)
+            {
+                lblProses.Invoke(new Action(() => lblProses.Text = "Gagal mendownload " + gagal.Count + " data absensi"));
+                MessageBox.Show("Gagal mendownload " + gagal.Count + " data absensi");
+                e.Cancel = true;
+            }
+            else
+            {
+                lblProses.Invoke(new Action(() => lblProses.Text = "Berhasil mendownload " + jumlah.ToString() + " data absensi dari mesin"));
+                MessageBox.Show("Berhasil mendownload " + jumlah.ToString() + " data absensi dari mesin");
             }
         }
 
         private void bwPosting_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
+            axCZKEM1.Disconnect();
             if (e.Error != null)
             {
                 MessageBox.Show(e.Error.Message);
@@ -189,7 +193,8 @@ namespace Fingerprint
 
         private void FormProses_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(bwDownload.IsBusy)
+            axCZKEM1.Disconnect();
+            if (bwDownload.IsBusy)
                 e.Cancel = true;
         }
     }
