@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fingerprint", "Fingerprint\Fingerprint.csproj", "{47E0F754-9902-4EE6-A081-EA978C7357C3}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{DDEC06BE-DE1D-49AA-817A-9A0C34381F65}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup SIM Kendali", "Setup\Setup.vdproj", "{DDEC06BE-DE1D-49AA-817A-9A0C34381F65}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUpdate", "SharpUpdate\SharpUpdate.csproj", "{811C1D69-764F-4335-8363-B93A1D106268}"
 EndProject

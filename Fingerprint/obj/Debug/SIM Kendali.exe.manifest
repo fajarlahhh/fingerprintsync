@@ -4,7 +4,7 @@
   <description asmv2:iconFile="fingerprint_orange.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="SIM Kendali" version="1.2.2.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="SIM Kendali" version="1.2.5.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="SIM Kendali.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -86,7 +86,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lEILKdLG4WMJJSoIHo8Eh+W3GuX8Kx5XcGlDzvNrsxg=</dsig:DigestValue>
+        <dsig:DigestValue>FLiDYEzOpxSoXBcSxO6QF/XOMAZSZKSoPAr93aK1zYI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -170,19 +170,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>JWoQ9ehvzJPJf73ycOVZacCaKqLM2q9/s2CArakssrI=</dsig:DigestValue>
+        <dsig:DigestValue>wZGhu1WOqgXj/8MbCiWrrmlHITJOp+1RRdP9po9A9R8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SIM Kendali.exe" size="1169408">
-      <assemblyIdentity name="SIM Kendali" version="1.2.2.0" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="SIM Kendali" version="1.2.5.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4HUrSVmOkoP7Cy2Vhf4I9kNieM8kSyBe4hJNypDsm4U=</dsig:DigestValue>
+        <dsig:DigestValue>h7tx3RJYjShD2ebjeYE94qo5PXVuqb1LAwyRjUUJShk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -210,13 +210,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="app.ini" size="107">
+  <file name="app.ini" size="116">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>EXbRvBXV8hk7AmkMNcyQrbBrCwWWGGH2UCr0WoGjSC4=</dsig:DigestValue>
+      <dsig:DigestValue>MWCLwDx4s0zc31OeKTuX36DACNSYrq6OT4by9/E4bQg=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Fingerprint.Context.tt" size="22300">
@@ -234,7 +234,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>3JgPF/3HAa+gMAsGdYYqldcd14YOSYFXacKhe4Zbv/4=</dsig:DigestValue>
+      <dsig:DigestValue>rGrtR0DTMkm3O/IC+X0Be/YuYMQspQf7su1Isg+lOqc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Fingerprint.tt" size="24548">
@@ -252,7 +252,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>WdKLyx4lUm8YqhNjXfLAx3twhAF3zmcGPss77fXf9Kc=</dsig:DigestValue>
+      <dsig:DigestValue>YLpTQJTWKmSJ28GFobLKXrtZ8XlQowJ6bUbRX+2cUQ4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="fingerprint_orange.ico" size="129929">
@@ -264,13 +264,13 @@
       <dsig:DigestValue>qvkHDeU5vLKn3i8uQzPghqmvxXx6hR2WqTIrCR0lnFE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SIM Kendali.exe.config" size="4157">
+  <file name="SIM Kendali.exe.config" size="4223">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>ShYTWSf2eBWftjZGidXEy0F6bOxrDBCHb5+1lfixEvE=</dsig:DigestValue>
+      <dsig:DigestValue>UdVQSD9qVOYOjm7DLy1qwroLN45Jf6dRoCIRHrc9skE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="simkendali.mdf" size="8388608" writeableType="applicationData">
@@ -279,7 +279,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>F634kzvj5hVDB6bGKQbyUrlDWxBTh3oJKjbWf5ODkXs=</dsig:DigestValue>
+      <dsig:DigestValue>99BB0kZ4TR4Pl9tujnNIm16pUIhc2Ty4IRXmaE/T43Y=</dsig:DigestValue>
     </hash>
   </file>
   <file name="simkendali_log.ldf" size="8388608" writeableType="applicationData">
@@ -288,7 +288,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>tCVjFe9V8Y9KotI4Om55WLzo5QQlB0I4KP+2+dFpbQI=</dsig:DigestValue>
+      <dsig:DigestValue>S/n6/eVq/izi/hPbPiKu3r0jNw47I/BVmlw87PuVc0g=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
