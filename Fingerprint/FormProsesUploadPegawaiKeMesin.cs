@@ -25,13 +25,13 @@ namespace Fingerprint
         }
 
         List<string> gagal = new List<string>();
+        int iMachineNumber = 1;
 
         private void bwPosting_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             try
             {
                 bool bIsConnected = false;
-                int iMachineNumber = 1;
                 int idwErrorCode = 0;
 
                 lblProses.Invoke(new Action(() => lblProses.Text = "Mengambil data mesin"));
@@ -107,6 +107,7 @@ namespace Fingerprint
                         axCZKEM1.EnableDevice(iMachineNumber, true);                        
                     }
                     no += 1;
+                    axCZKEM1.EnableDevice(iMachineNumber, true);
                     axCZKEM1.Disconnect();
                 }
                 if (gagal.Count > 0)
@@ -129,6 +130,8 @@ namespace Fingerprint
 
         private void bwPosting_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
+            axCZKEM1.EnableDevice(iMachineNumber, true);
+            axCZKEM1.Disconnect();
             if (e.Error != null)
             {
                 MessageBox.Show(e.Error.Message);

@@ -72,7 +72,7 @@ namespace Fingerprint.View
 
         private void btnHapus_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(String.Format("Anda akan menghapus data log tahun\n\"{0}\"", dtTahun.Value.Year),
+            if (MessageBox.Show(String.Format("Anda akan menghapus semua data log di tahun\n\"{0}\"", dtTahun.Value.Year),
                         "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 var log = fp.logs.Where(x => x.log_tanggal.Year.Equals(dtTahun.Value.Year)).ToList();

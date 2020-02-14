@@ -113,6 +113,7 @@ namespace Fingerprint.View
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
+            GetPegawai();
             GroupAksi(false, "");
             dtTahun.Focus();
         }

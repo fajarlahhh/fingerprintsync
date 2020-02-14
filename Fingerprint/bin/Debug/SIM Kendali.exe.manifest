@@ -4,7 +4,7 @@
   <description asmv2:iconFile="fingerprint_orange.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="SIM Kendali" version="1.2.5.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="SIM Kendali" version="1.2.7.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="SIM Kendali.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -86,7 +86,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FLiDYEzOpxSoXBcSxO6QF/XOMAZSZKSoPAr93aK1zYI=</dsig:DigestValue>
+        <dsig:DigestValue>wI78jZ4cfP6VbPMzaFcSOaDqQnPpzwXFq9RvrTtCcQE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -170,19 +170,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>wZGhu1WOqgXj/8MbCiWrrmlHITJOp+1RRdP9po9A9R8=</dsig:DigestValue>
+        <dsig:DigestValue>6TPvtsRxIyT181ZgZ6RlvQw4OUTiO9mmfnZX8G7DeVI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SIM Kendali.exe" size="1169408">
-      <assemblyIdentity name="SIM Kendali" version="1.2.5.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SIM Kendali.exe" size="1169920">
+      <assemblyIdentity name="SIM Kendali" version="1.2.7.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>h7tx3RJYjShD2ebjeYE94qo5PXVuqb1LAwyRjUUJShk=</dsig:DigestValue>
+        <dsig:DigestValue>QMESJVwt6AUTEMxDQ8WP1libdg/LCgEYPSRFNV+KodY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -234,7 +234,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>rGrtR0DTMkm3O/IC+X0Be/YuYMQspQf7su1Isg+lOqc=</dsig:DigestValue>
+      <dsig:DigestValue>XcPDvr0pq66TcKWpN1gHyD+702PMC6CaNq0bsytVFlc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Fingerprint.tt" size="24548">
@@ -246,13 +246,13 @@
       <dsig:DigestValue>fNaGrYznaNtIkBYKLxAbCnE4CLoHoI+Fp37tk2m4Kcg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="fingerprint_log.ldf" size="1048576" writeableType="applicationData">
+  <file name="fingerprint_log.ldf" size="516096" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>YLpTQJTWKmSJ28GFobLKXrtZ8XlQowJ6bUbRX+2cUQ4=</dsig:DigestValue>
+      <dsig:DigestValue>EG17Dg3a6lVaMOHNAodfGsYBsWSgfL9AAJKc8jxv54I=</dsig:DigestValue>
     </hash>
   </file>
   <file name="fingerprint_orange.ico" size="129929">
@@ -279,7 +279,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>99BB0kZ4TR4Pl9tujnNIm16pUIhc2Ty4IRXmaE/T43Y=</dsig:DigestValue>
+      <dsig:DigestValue>mvnezWdUI4yavCNvBGcx0wKZ6EJ80FwPs5rWb3IucI8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="simkendali_log.ldf" size="8388608" writeableType="applicationData">
@@ -288,7 +288,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>S/n6/eVq/izi/hPbPiKu3r0jNw47I/BVmlw87PuVc0g=</dsig:DigestValue>
+      <dsig:DigestValue>JVquKjQo5mP40J1qvNtW/z4KpwMSOaxKFe87OeJNbVw=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

@@ -28,14 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgLog = new System.Windows.Forms.DataGridView();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.txtCari = new System.Windows.Forms.TextBox();
-            this.dtTahun = new System.Windows.Forms.DateTimePicker();
-            this.btnHapus = new System.Windows.Forms.Button();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +37,12 @@
             this.waktu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jenis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.keterangan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.txtCari = new System.Windows.Forms.TextBox();
+            this.dtTahun = new System.Windows.Forms.DateTimePicker();
+            this.btnHapus = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgLog)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,6 +73,66 @@
             this.dgLog.ShowEditingIcon = false;
             this.dgLog.Size = new System.Drawing.Size(847, 536);
             this.dgLog.TabIndex = 62;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // nip
+            // 
+            this.nip.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nip.DataPropertyName = "nip";
+            this.nip.HeaderText = "NIP";
+            this.nip.Name = "nip";
+            this.nip.ReadOnly = true;
+            this.nip.Width = 50;
+            // 
+            // nama
+            // 
+            this.nama.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nama.DataPropertyName = "nama";
+            this.nama.HeaderText = "Nama";
+            this.nama.Name = "nama";
+            this.nama.ReadOnly = true;
+            this.nama.Width = 60;
+            // 
+            // tanggal
+            // 
+            this.tanggal.DataPropertyName = "tanggal";
+            dataGridViewCellStyle4.Format = "dd MMMM yyyy";
+            dataGridViewCellStyle4.NullValue = null;
+            this.tanggal.DefaultCellStyle = dataGridViewCellStyle4;
+            this.tanggal.HeaderText = "Tanggal";
+            this.tanggal.Name = "tanggal";
+            this.tanggal.ReadOnly = true;
+            this.tanggal.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.tanggal.Width = 150;
+            // 
+            // waktu
+            // 
+            this.waktu.DataPropertyName = "waktu";
+            this.waktu.HeaderText = "Waktu";
+            this.waktu.Name = "waktu";
+            this.waktu.ReadOnly = true;
+            // 
+            // jenis
+            // 
+            this.jenis.DataPropertyName = "jenis";
+            this.jenis.HeaderText = "Jenis";
+            this.jenis.Name = "jenis";
+            this.jenis.ReadOnly = true;
+            // 
+            // keterangan
+            // 
+            this.keterangan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.keterangan.DataPropertyName = "keterangan";
+            this.keterangan.HeaderText = "Keterangan";
+            this.keterangan.Name = "keterangan";
+            this.keterangan.ReadOnly = true;
             // 
             // btnRefresh
             // 
@@ -114,6 +174,7 @@
             this.btnHapus.TabIndex = 69;
             this.btnHapus.Text = "Hapus";
             this.btnHapus.UseVisualStyleBackColor = true;
+            this.btnHapus.Visible = false;
             this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // btnImport
@@ -125,6 +186,7 @@
             this.btnImport.TabIndex = 70;
             this.btnImport.Text = "Import";
             this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Visible = false;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // label4
@@ -135,66 +197,6 @@
             this.label4.Size = new System.Drawing.Size(25, 13);
             this.label4.TabIndex = 71;
             this.label4.Text = "Cari";
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // nip
-            // 
-            this.nip.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.nip.DataPropertyName = "nip";
-            this.nip.HeaderText = "NIP";
-            this.nip.Name = "nip";
-            this.nip.ReadOnly = true;
-            this.nip.Width = 50;
-            // 
-            // nama
-            // 
-            this.nama.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.nama.DataPropertyName = "nama";
-            this.nama.HeaderText = "Nama";
-            this.nama.Name = "nama";
-            this.nama.ReadOnly = true;
-            this.nama.Width = 60;
-            // 
-            // tanggal
-            // 
-            this.tanggal.DataPropertyName = "tanggal";
-            dataGridViewCellStyle1.Format = "dd MMMM yyyy";
-            dataGridViewCellStyle1.NullValue = null;
-            this.tanggal.DefaultCellStyle = dataGridViewCellStyle1;
-            this.tanggal.HeaderText = "Tanggal";
-            this.tanggal.Name = "tanggal";
-            this.tanggal.ReadOnly = true;
-            this.tanggal.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.tanggal.Width = 150;
-            // 
-            // waktu
-            // 
-            this.waktu.DataPropertyName = "waktu";
-            this.waktu.HeaderText = "Waktu";
-            this.waktu.Name = "waktu";
-            this.waktu.ReadOnly = true;
-            // 
-            // jenis
-            // 
-            this.jenis.DataPropertyName = "jenis";
-            this.jenis.HeaderText = "Jenis";
-            this.jenis.Name = "jenis";
-            this.jenis.ReadOnly = true;
-            // 
-            // keterangan
-            // 
-            this.keterangan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.keterangan.DataPropertyName = "keterangan";
-            this.keterangan.HeaderText = "Keterangan";
-            this.keterangan.Name = "keterangan";
-            this.keterangan.ReadOnly = true;
             // 
             // UcLog
             // 

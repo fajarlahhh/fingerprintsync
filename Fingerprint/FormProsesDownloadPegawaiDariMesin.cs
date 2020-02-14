@@ -24,11 +24,11 @@ namespace Fingerprint
         }
 
         List<string> gagal = new List<string>();
+        int iMachineNumber = 1;
 
         private void bwPosting_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             bool bIsConnected = false;
-            int iMachineNumber = 1;
             int idwErrorCode = 0;
 
             lblProses.Invoke(new Action(() => lblProses.Text = "Mengambil data mesin"));
@@ -60,11 +60,11 @@ namespace Fingerprint
                     bool bEnabled = false;
                     int iValue = 0;
                     lblProses.Invoke(new Action(() => lblProses.Text = "Menghitung jumlah data pegawai"));
+                    axCZKEM1.EnableDevice(iMachineNumber, false);
 
                     if (axCZKEM1.GetDeviceStatus(iMachineNumber, 2, ref iValue))
                     {
                         int nomor = 1;
-                        axCZKEM1.EnableDevice(iMachineNumber, false);
                         axCZKEM1.ReadAllUserID(iMachineNumber);
                         lblProses.Invoke(new Action(() => lblProses.Text = "Mendownload " + iValue.ToString() + " data pegawai"));
                         while (axCZKEM1.SSR_GetAllUserInfo(iMachineNumber, out sdwEnrollNumber, out sName, out sPassword, out iPrivilege, out bEnabled))
@@ -116,6 +116,7 @@ namespace Fingerprint
                         lblProses.Invoke(new Action(() => lblProses.Text = "Operation failed,ErrorCode=" + idwErrorCode.ToString()));
                     }
                     no += 1;
+                    axCZKEM1.EnableDevice(iMachineNumber, true);
                     axCZKEM1.Disconnect();
                 }
             }
@@ -134,6 +135,7 @@ namespace Fingerprint
 
         private void bwPosting_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
+            axCZKEM1.EnableDevice(iMachineNumber, true);
             axCZKEM1.Disconnect();
             if (e.Error != null)
             {

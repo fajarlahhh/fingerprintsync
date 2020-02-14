@@ -102,7 +102,7 @@ namespace Fingerprint.View
                     for (int i = 0; i <= diff; i++)
                     {
                         DateTime inputDate = tanggal.AddDays(i);
-                        if (fp.liburs.Where(x => x.libur_tanggal.Equals(dtTanggal1.Value)).Count() == 0)
+                        if (fp.liburs.Where(x => x.libur_tanggal.Equals(inputDate.Date)).Count() == 0)
                         {
                             libur data = new libur();
                             data.libur_tanggal = inputDate.Date;
@@ -111,7 +111,6 @@ namespace Fingerprint.View
                             fp.SaveChanges();
                         }
                     }
-                    GetData();
                     GetData();
                 }
                 else

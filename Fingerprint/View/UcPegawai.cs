@@ -235,6 +235,7 @@ namespace Fingerprint.View
                                     {
                                         iMachineNumber = no;
                                         axCZKEM1.RegEvent(iMachineNumber, 65535);
+                                        axCZKEM1.EnableDevice(iMachineNumber, false);
                                         if (axCZKEM1.SSR_DeleteEnrollData(iMachineNumber, pegawai_id, 12))
                                         {
                                             axCZKEM1.RefreshData(iMachineNumber);
@@ -244,8 +245,38 @@ namespace Fingerprint.View
                                         }
                                         else
                                         {
-                                            axCZKEM1.GetLastError(ref idwErrorCode);
-                                            MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
+                                            if (axCZKEM1.SSR_DeleteEnrollData(iMachineNumber, pegawai_id, 11))
+                                            {
+                                                axCZKEM1.RefreshData(iMachineNumber);
+                                                fp.pegawais.Remove(pegawai);
+                                                fp.SaveChanges();
+                                                GetData();
+                                            }
+                                            else
+                                            {
+                                                if (axCZKEM1.SSR_DeleteEnrollData(iMachineNumber, pegawai_id, 10))
+                                                {
+                                                    axCZKEM1.RefreshData(iMachineNumber);
+                                                    fp.pegawais.Remove(pegawai);
+                                                    fp.SaveChanges();
+                                                    GetData();
+                                                }
+                                                else
+                                                {
+                                                    if (axCZKEM1.SSR_DeleteEnrollData(iMachineNumber, pegawai_id, 6))
+                                                    {
+                                                        axCZKEM1.RefreshData(iMachineNumber);
+                                                        fp.pegawais.Remove(pegawai);
+                                                        fp.SaveChanges();
+                                                        GetData();
+                                                    }
+                                                    else
+                                                    {
+                                                        axCZKEM1.GetLastError(ref idwErrorCode);
+                                                        MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                     else
@@ -254,6 +285,7 @@ namespace Fingerprint.View
                                         MessageBox.Show("Unable to connect the device,ErrorCode=" + idwErrorCode.ToString(), "Error");
                                     }
                                     no += 1;
+                                    axCZKEM1.EnableDevice(iMachineNumber, true);
                                     axCZKEM1.Disconnect();
                                 }
                             }
@@ -384,9 +416,9 @@ namespace Fingerprint.View
                     }
                     axCZKEM1.BatchUpdate(iMachineNumber);
                     axCZKEM1.RefreshData(iMachineNumber);
-                    axCZKEM1.EnableDevice(iMachineNumber, true);
                 }
                 no += 1;
+                axCZKEM1.EnableDevice(iMachineNumber, true);
                 axCZKEM1.Disconnect();
             }
         }
